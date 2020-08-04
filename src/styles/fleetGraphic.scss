@@ -1,0 +1,44 @@
+@import "node_modules/carbon-components/scss/globals/scss/colors";
+@import "node_modules/carbon-components/scss/globals/scss/theme";
+
+$carbon--theme: $carbon--theme--g90;
+@include carbon--theme();
+
+.multiGraphicContainer {
+  position: absolute;
+  display: flex;
+
+  top: 4rem;
+  left: 4rem;
+  width: 20rem;
+  height: 20rem;
+  z-index: 5;
+
+  .svgWrapper {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-start;
+    align-content: center;
+
+    width: 25%;
+    height: 100%;
+
+    svg {
+      width: 80px;
+      height: 240px;
+
+      stroke: $interactive-01;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
+  .helperText {
+    @include carbon--type-style("expressive-heading-03", true);
+    color: $text-02;
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
+}

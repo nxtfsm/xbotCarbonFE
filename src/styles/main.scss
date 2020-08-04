@@ -1,0 +1,36 @@
+// main.scss
+@import "node_modules/carbon-components/scss/globals/grid/grid";
+@import "node_modules/carbon-components/scss/globals/scss/colors";
+@import "node_modules/carbon-components/scss/globals/scss/theme";
+@import 'node_modules/@carbon/type/scss/type';
+@import 'node_modules/@carbon/type/scss/font-face/mono';
+@import 'node_modules/@carbon/type/scss/font-face/sans';
+
+@include carbon--type-reset();
+@include carbon--font-face-mono();
+@include carbon--font-face-sans();
+
+$carbon--theme: $carbon--theme--g90;
+@include carbon--theme();
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $ui-background;
+  overflow-x: hidden;
+}
+
+h1 {
+  @include carbon--type-style("display-04", true);
+  color: $text-01;
+}
+
+#mainBody {
+  height: calc(100vh - 2rem);
+  margin-top: 2rem;
+  overflow: hidden;
+}
