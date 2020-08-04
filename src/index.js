@@ -16,3 +16,8 @@ scriptLoader().then( () => {
   fleetAnimLoader(initFleetGraphicContainer)
 
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('inside DOMContentLoaded')
+  //registerEvents()
+})

@@ -23,6 +23,7 @@ export const sectionToggler = (caller, tiles, rowToShrink, rowToExpand) => {
           .to(rowToExpand, {scaleX: 1, opacity: 1, duration: 1}, "-=.1")
           .to(rowToExpand, {height: "80vh", duration: 1}, "<.3")
 
+        
         classToggler(caller, 'active')
     }
 }

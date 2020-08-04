@@ -2,11 +2,12 @@
 import { classToggler } from './helperFuncs.js'
 
 export const tabPanelToggler = (caller, links, panels) => {
-  if (!caller.classList.contains("bx--tabs__nav-item--selected")) {
+  console.log(caller.parentElement)
+  if (!caller.parentElement.classList.contains("bx--tabs__nav-item--selected")) {
     let currentActiveLink = document.querySelector(".bx--tabs__nav-item--selected"),
         currentActivePanel = document.querySelector(currentActiveLink.dataset.target),
-        newActivePanel = document.querySelector(caller.dataset.target),
-        links = [currentActiveLink, caller],
+        newActivePanel = document.querySelector(caller.parentElement.dataset.target),
+        links = [currentActiveLink, caller.parentElement],
         panels = [currentActivePanel, newActivePanel];
 
     for (const link of links)
