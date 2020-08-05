@@ -2,7 +2,7 @@ export const classToggler = (element, className) => { element.classList.toggle(c
 
 export const loadHTMLintoElement = (reference, intoElem) => {
   let target = reference.dataset.target,
-      url = "./src/windows/" + target + ".html";
+      url = "./" + target + ".html";
 
   if (url) {
     let xhttp = new XMLHttpRequest();
