@@ -1,0 +1,47 @@
+{
+  "codeDemos": {
+    "mainId": "codeDemos",
+    "displayTitle": "Code Demos",
+    "tabs": [
+      {
+        "title": "Xavier Made",
+        "content": "Locally Sourced Tutorials & Livestreams."
+      },
+      {
+        "title": "External",
+        "content": "Great Stuff from the wide wide world of sports."
+      }
+    ]
+  },
+
+  "projectGallery": {
+    "mainId": "projectGallery",
+    "displayTitle": "Project Gallery",
+    "tabs": null
+  },
+
+  "techSupport": {
+    "mainId": "techSupport",
+    "displayTitle": "Tech Support",
+    "tabs": [
+      {
+        "title": "Xavier 1:1",
+        "content": "Tools for making Xavier Pinebooks go."
+      },
+      {
+        "title": "Other Devices",
+        "content": "Guides to get coding on your own machine."
+      },
+      {
+        "title": "More Resources",
+        "content": "Explore & become an IT ninja admin mage overlord."
+      }
+    ]
+  },
+
+  "ourPlatforms": {
+    "mainId": "ourPlatforms",
+    "displayTitle": "Our Platforms",
+    "tabs" : null
+  }
+}

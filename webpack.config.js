@@ -1,11 +1,9 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin"),
       MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-
       path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
-
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
@@ -56,6 +54,10 @@ module.exports = {
 
     }),
     new HtmlWebPackPlugin({
+      template: "./src/templates/topLevelSectionTile.html",
+      filename: "./templates/topLevelSectionTile.html"
+    }),
+    new HtmlWebPackPlugin({
       template: "./src/templates/mainContentSection.html",
       filename: "./templates/mainContentSection.html"
     }),
@@ -66,7 +68,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    }),
-
+    })
   ]
 }

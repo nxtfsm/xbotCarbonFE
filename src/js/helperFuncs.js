@@ -1,13 +1,16 @@
 export const classToggler = (element, className) => { element.classList.toggle(className) }
 
-export const nameParser = fromElemList => {
-  let templates = document.querySelectorAll('template')
-  console.log('parser fired')
-  console.log(templates)
-  for (let template of templates) {
-    console.log(template.id)
+export const jsonTest = () => {
+  
+  console.log(data)
+}
 
-  }
+export const fetchJSONfromURL = url => {
+  return new Promise(
+    function ( resolver ) {
+
+    }
+  )
 }
 
 export const parseElementFromHTML = url => {
@@ -15,7 +18,7 @@ export const parseElementFromHTML = url => {
     function( resolver ) {
 
       let request = new Request(url)
-        fetch(request)
+        return fetch(request)
           .then( response => {
             if (!response.ok)
               { throw new Error(`HTTP error! status: ${response.status}`); }

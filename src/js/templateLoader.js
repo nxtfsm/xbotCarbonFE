@@ -2,9 +2,9 @@
 import { parseElementFromHTML, insertElementInHead } from "./helperFuncs"
 
 export const loadTemplatesFromURLs = () => {
-  let links = ["./templates/tabbedContentWindow.html", "./templates/mainContentSection.html"];
-  for (let link of links)
-    { parseElementFromHTML(link).then(elem => { insertElementInHead(elem) }) }
+  let urls = ["./templates/topLevelSectionTile.html", "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html"];
+  for (let url of urls)
+    { parseElementFromHTML(url).then(elem => { insertElementInHead(elem) }) }
 }
 
 /*export const templateBuilder = fromTemplate => {
