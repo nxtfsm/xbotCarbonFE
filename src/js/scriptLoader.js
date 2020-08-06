@@ -15,7 +15,7 @@ let scriptObjects = {
 ]
 }
 
-export const scriptLoader = () => {
+export const loadScripts = () => {
   return new Promise(
     function( completionHandler ) {
       const script = require("scriptjs");

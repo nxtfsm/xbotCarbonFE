@@ -3,21 +3,18 @@ import './styles/fleetGraphic.scss'
 import './styles/stickyButton.scss'
 import './styles/rowMainTopTiles.scss'
 import './styles/rowMainContent.scss'
-import { scriptLoader } from './js/scriptLoader'
-import { iconLoader } from './js/iconLoader'
+import { loadTemplatesFromURLs as loadTemplates } from './js/templateLoader'
+import { loadScripts } from './js/scriptLoader'
+import { loadIcons } from './js/iconLoader'
 import { registerEvents } from './js/registerEvents'
-import { fleetAnimLoader } from './js/fleetAnimations'
+import { loadFleetAnimation } from './js/fleetAnimations'
 
 const initFleetGraphicContainer = document.getElementById("animFleetContainer");
 
-scriptLoader().then( () => {
-  iconLoader()
+loadTemplates()
+
+loadScripts().then( () => {
+  loadIcons()
   registerEvents()
-  fleetAnimLoader(initFleetGraphicContainer)
-
-})
-
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('inside DOMContentLoaded')
-  //registerEvents()
+  loadFleetAnimation(initFleetGraphicContainer)
 })

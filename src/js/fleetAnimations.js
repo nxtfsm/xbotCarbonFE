@@ -5,7 +5,7 @@ import { expandTileBannerRow } from './topLevelSectionAnimations'
 let helperMessages = ["(scroll to start)", "(click to skip ahead)"],
     helperText = document.querySelector("#animFleetContainer .helperText");
 
-export const fleetAnimLoader = container => {
+export const loadFleetAnimation = container => {
   let graphicWrappers = container.querySelectorAll(".svgWrapper")
 
   registerAnimFX().then( () => {
