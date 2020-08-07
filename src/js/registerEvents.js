@@ -1,30 +1,31 @@
 // registerEvents.js
+import { expandFleetToTiles } from './fleetAnimations'
 import { sectionToggler } from './topLevelSectionAnimations'
-import { fleetClickHandler } from './fleetAnimations'
-import { tabPanelToggler } from './contentTabPanelAnimations'
-import { loadHTMLintoElement } from './helperFuncs'
-import { initContentSection } from './contentSectionLoader'
+import { loadContentWindowInGrid } from './elementInitializers'
+import { switchTabPanels } from './tabPanelAnimations'
 
 const topTilesRow = document.querySelector(".topTilesRow"),
-      mainContent = document.querySelector(".mainContentRow"),
+      mainContentRow = document.querySelector(".mainContentRow"),
       fleetContainer = document.querySelector("#animFleetContainer");
 
-export const registerEvents = () => {
+export const registerEvents = (topLevelSections) => {
+const headerTiles = gsap.utils.toArray(topTilesRow.querySelectorAll(".tlhTile"));
 
-const shipWraps = gsap.utils.toArray(fleetContainer.querySelectorAll(".svgWrapper")),
-      headerTiles = gsap.utils.toArray(topTilesRow.querySelectorAll(".tlhTile")),
-      tabLinks = gsap.utils.toArray(mainContent.querySelectorAll(".bx--tabs__nav-item")),
-      tabPanels = gsap.utils.toArray(mainContent.querySelectorAll("[role='tabpanel']"));
+  fleetContainer.addEventListener('click', function()
+    { expandFleetToTiles(this, headerTiles) })
 
-  for (const wrapper of shipWraps) {
-      wrapper.addEventListener('click', function() {
-        fleetClickHandler(fleetContainer, headerTiles) }) }
+  topTilesRow.addEventListener('click', function(e) {
+    
+    if (e.target.classList.contains('tlhTile')) {
 
-  for (const tile of headerTiles) {
-      tile.addEventListener('click', function() {
-        sectionToggler(this, headerTiles, topTilesRow, mainContent)
-        initContentSection() }) }
+      let caller = e.target,
+          targetId = caller.dataset.target,
+          sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
+      sectionToggler(caller, headerTiles, topTilesRow, mainContentRow)
+      loadContentWindowInGrid(sectionToLoad, mainContentRow)
+    }
+  })
 
-  mainContent.addEventListener('click', function(e) {
+  mainContentRow.addEventListener('click', function(e) {
       if (e.target.classList.contains('bx--tabs__nav-link')) {
-        tabPanelToggler(e.target, tabLinks, tabPanels) } }) }
+        switchTabPanels(e.target) } }) }

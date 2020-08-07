@@ -4,10 +4,12 @@
     "displayTitle": "Code Demos",
     "tabs": [
       {
+        "id": "internalCodeDemos",
         "title": "Xavier Made",
         "content": "Locally Sourced Tutorials & Livestreams."
       },
       {
+        "id": "externalCodeDemos",
         "title": "External",
         "content": "Great Stuff from the wide wide world of sports."
       }
@@ -25,14 +27,17 @@
     "displayTitle": "Tech Support",
     "tabs": [
       {
+        "id": "xavierDevicesTechSupport",
         "title": "Xavier 1:1",
         "content": "Tools for making Xavier Pinebooks go."
       },
       {
+        "id": "personalDevicesTechSupport",
         "title": "Other Devices",
         "content": "Guides to get coding on your own machine."
       },
       {
+        "id": "learningResourcesTechSupport",
         "title": "More Resources",
         "content": "Explore & become an IT ninja admin mage overlord."
       }

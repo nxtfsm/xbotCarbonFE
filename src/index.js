@@ -3,27 +3,29 @@ import './styles/fleetGraphic.scss'
 import './styles/stickyButton.scss'
 import './styles/rowMainTopTiles.scss'
 import './styles/rowMainContent.scss'
+import { loadSectionObjects } from './js/loadDataObjects'
 import { loadTemplatesFromURLs as loadTemplates } from './js/templateLoader'
 import { loadScripts } from './js/scriptLoader'
 import { loadIcons } from './js/iconLoader'
 import { registerEvents } from './js/registerEvents'
-import { initSections } from './js/sectionConfigs'
+//import { initSections } from './js/sectionConfigs'
 import { loadFleetAnimation } from './js/fleetAnimations'
 import { loadHeaderTilesInGrid } from './js/elementInitializers'
 
 
-import * as sectionConfigData from './data/sectionConfigs.json'
+/*import * as sectionConfigData from './data/sectionConfigs.json'
 const sectionConfigs = sectionConfigData.default,
-      topLevelSections = initSections(sectionConfigs),
+      topLevelSections = initSections(sectionConfigs),*/
+const topLevelSections = loadSectionObjects(),
       initFleetGraphicContainer = document.getElementById("animFleetContainer"),
-      topLevelTileRow = document.getElementById("mainSectionContainer");
+      topTilesRow = document.getElementById("mainSectionContainer");
 
-//console.log(topLevelSections)
+
 loadTemplates()
 
 loadScripts().then( () => {
-  loadHeaderTilesInGrid(topLevelSections, topLevelTileRow)
+  loadHeaderTilesInGrid(topLevelSections, topTilesRow)
   loadIcons()
-  registerEvents()
+  registerEvents(topLevelSections)
   loadFleetAnimation(initFleetGraphicContainer)
 })

@@ -2,7 +2,7 @@
 import { parseElementFromHTML, insertElementInHead } from "./helperFuncs"
 
 export const loadTemplatesFromURLs = () => {
-  let urls = ["./templates/topLevelSectionTile.html", "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html"];
+  let urls = ["./templates/topLevelSectionTile.html", "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html", "./templates/tabListHead.html", "./templates/tabContentPanel.html"];
   for (let url of urls)
     { parseElementFromHTML(url).then(elem => { insertElementInHead(elem) }) }
 }

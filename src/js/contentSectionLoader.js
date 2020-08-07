@@ -1,7 +1,5 @@
 // contentSectionLoader.js
-//import { templateBuilder } from './templateLoader'
-
-export const initContentSection = () => {
+export const oldInitContentSection = () => {
   let mainContainer = document.getElementById('mainContentContainer'),
       sectionTemplate = document.getElementById('main-content-section'),
       tabTemplate = document.getElementById('tabbed-content-window'),
@@ -12,6 +10,5 @@ export const initContentSection = () => {
       contentWindow.appendChild(tabClone)
       mainContainer.appendChild(sectionClone)
 
-      //console.log(tabTemplate.content.querySelectorAll('slot'))
 
 }

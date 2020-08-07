@@ -65,6 +65,14 @@ module.exports = {
       template: "./src/templates/tabbedContentWindow.html",
       filename: "./templates/tabbedContentWindow.html"
     }),
+    new HtmlWebPackPlugin({
+      template: "./src/templates/tabContentPanel.html",
+      filename: "./templates/tabContentPanel.html"
+    }),
+    new HtmlWebPackPlugin({
+      template: "./src/templates/tabListHead.html",
+      filename: "./templates/tabListHead.html"
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"

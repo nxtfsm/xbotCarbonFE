@@ -39,12 +39,14 @@ class TabbedContentWindow extends ContentWindow {
   constructor(inSectionId, tabs) {
     super(inSectionId)
     this.type = "tabbed",
-    this.tabs = tabs.map( (tab) => { return new TabSection(tab.title, tab.content) })
+    this.tabs = tabs.map( (tab) => {
+      return new TabSection(tab.id, tab.title, tab.content) })
   }
 }
 
 class TabSection {
-  constructor(title, content) {
+  constructor(id, title, content) {
+    this.id = id,
     this.title = title,
     this.content = content
   }

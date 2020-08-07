@@ -23,7 +23,7 @@ export const loadFleetAnimation = container => {
       helperTextsAnimSwitcher() } )
 }
 
-export const fleetClickHandler = (container, toTiles) => {
+export const expandFleetToTiles = (container, toTiles) => {
   let tl = gsap.timeline()
   helperText.remove()
   tl.add(quickFleetCollapser(container))
