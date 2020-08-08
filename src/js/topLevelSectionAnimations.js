@@ -1,31 +1,79 @@
 // topLevelSectionAnimations.js
 import { classToggler } from './helperFuncs.js'
+import { topTilesRow, mainContentRow } from '../index.js'
 
-export const sectionToggler = (caller, tiles, rowToShrink, rowToExpand) => {
-  if (!caller.classList.contains("active")) {
-    let thisIdx = tiles.indexOf(caller),
-        labels = gsap.utils.toArray(document.querySelectorAll('.tlhTile .label')),
-        currentActive = document.querySelector(".active"),
-        tl = gsap.timeline( { defaults: { duration: .4, transformOrigin: "center center",
-          ease: 'cubic-bezier(0.2, 0, 0.38, 0.9)' } });
+export const displayContentWindow = callerId => {
+    let callerCol = topTilesRow.querySelector(`[data-target=${callerId}]`),
+        callerTile = callerCol.querySelector('.tlhTile'),
+        activeTile = topTilesRow.querySelector('.active'),
+        tl = gsap.timeline( {
+          defaults: {
+            duration: .4,
+            transformOrigin: "center center",
+            ease: 'cubic-bezier(0.2, 0, 0.38, 0.9)' },
+          onStart: () => {
+            [callerTile, activeTile].map((i) => { if (i) {classToggler(i, 'active')}})}
+          })
 
-      if (currentActive) {
-          tl.to(currentActive.querySelector(".iconContainer"), { rotateZ: "+=180deg" })
-          classToggler(currentActive, 'active')
-          }
+    if (activeTile == null) { return tl.add(firstDisplayContentWindow(callerTile)) }
 
-          tl.to(caller.querySelector(".iconContainer"),
-            { rotateZ: "+=180deg", transformOrigin: "center center" }, '<')
-          .to(tiles, {height: "4.5rem", stagger: {amount: .2, from: thisIdx, ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"}, duration: .7}, '<.2')
-          .to(document.querySelector(".topTilesRow"),
-            {height: "4.5rem", duration: .7}, "<")
+    tl.add(switchDisplayContentWindow(activeTile, callerTile))
+}
 
-          .to(rowToExpand, {scaleX: 1, opacity: 1, duration: 1}, "-=.1")
-          .to(rowToExpand, {height: "80vh", duration: 1}, "<.3")
+const firstDisplayContentWindow = fromTile => {
+  let anim = gsap.timeline()
+    .add(collapseTileRow(fromTile))
+    .add(expandContentWindow(mainContentRow.children[0]))
+  return anim
+}
 
-        
-        classToggler(caller, 'active')
-    }
+const switchDisplayContentWindow = (outgoingTile, incomingTile) => {
+  let anim = gsap.timeline()
+    .add(flipIcon(outgoingTile))
+    .add(flipIcon(incomingTile), '<')
+    .add(collapseContentWindow(mainContentRow.children[0]), '<')
+    .add(expandContentWindow(mainContentRow.children[1]))
+  return anim
+}
+
+const expandContentWindow = incomingWindow => {
+  let anim = gsap.timeline({ defaults: {transformOrigin: 'top left'} })
+    .set(incomingWindow, {visibility: 'visible'})
+    .to(incomingWindow, {scaleX: 1, opacity: 1, duration: .7})
+    .to(incomingWindow, {height: "80vh", duration: .7}, "<.3")
+  return anim
+}
+
+const collapseContentWindow = outgoingWindow => {
+  let anim = gsap.timeline({
+    defaults: {transformOrigin: 'bottom left'},
+    onComplete: () => { outgoingWindow.remove() } })
+    .to(outgoingWindow, {height: "5rem", opacity: 0, duration: .6})
+    .to(outgoingWindow, {scaleX: .1, duration: .6}, "<.3")
+  return anim
+}
+
+const collapseTileRow = caller => {
+  let tiles = gsap.utils.toArray(topTilesRow.querySelectorAll('.tlhTile')),
+      cols = gsap.utils.toArray(topTilesRow.querySelectorAll('.bx--col')),
+      callerIdx = tiles.indexOf(caller),
+      anim = gsap.timeline()
+        .add(flipIcon(caller))
+        .to(tiles, {
+          height: "4.5rem",
+          stagger: {amount: .2, from: callerIdx, ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"}, duration: .7}, '<.2')
+        .to(topTilesRow, {height: "4.5rem", duration: .7}, "<")
+        .set(mainContentRow, {scaleX: 1, height: "80vh"})
+        .set(cols, {height: "4.5rem"});
+      return anim
+}
+
+
+const flipIcon = caller => {
+  let icon = caller.querySelector(".iconContainer"),
+      anim = gsap.to(icon, { rotateZ: "+=180deg", transformOrigin: "center center" });
+      console.log('caller inside flipIcon: ', caller)
+      return anim
 }
 
 export const expandTileBannerRow = tiles => {
@@ -43,6 +91,5 @@ export const expandTileBannerRow = tiles => {
         .to(tiles, { height: "100%" }, '<.4')
         .to(labels, { opacity: 1, transformOrigin: "bottom left" }, "-=.2")
         .to(icons, { opacity: 1, transformOrigin: "bottom left"}, "<")
-
     return anim
   }

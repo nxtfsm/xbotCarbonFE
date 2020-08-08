@@ -1,9 +1,12 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin"),
+const HtmlWebpackPlugin = require("html-webpack-plugin"),
       MiniCssExtractPlugin = require("mini-css-extract-plugin"),
+      ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin'),
       path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.js'),
+  entry: {
+    index: path.resolve(__dirname, 'src/index.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
@@ -48,31 +51,31 @@ module.exports = {
     ]
   },
   plugins : [
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
-
     }),
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/templates/topLevelSectionTile.html",
-      filename: "./templates/topLevelSectionTile.html"
+      filename: "./templates/topLevelSectionTile.html",
     }),
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/templates/mainContentSection.html",
       filename: "./templates/mainContentSection.html"
     }),
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/templates/tabbedContentWindow.html",
       filename: "./templates/tabbedContentWindow.html"
     }),
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/templates/tabContentPanel.html",
       filename: "./templates/tabContentPanel.html"
     }),
-    new HtmlWebPackPlugin({
+    new HtmlWebpackPlugin({
       template: "./src/templates/tabListHead.html",
       filename: "./templates/tabListHead.html"
     }),
+    new ResourceHintWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"

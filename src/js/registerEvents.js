@@ -1,7 +1,7 @@
 // registerEvents.js
 import { expandFleetToTiles } from './fleetAnimations'
-import { sectionToggler } from './topLevelSectionAnimations'
-import { loadContentWindowInGrid } from './elementInitializers'
+import { loadContentWindowInRow } from './elementInitializers'
+import { displayContentWindow } from './topLevelSectionAnimations'
 import { switchTabPanels } from './tabPanelAnimations'
 
 const topTilesRow = document.querySelector(".topTilesRow"),
@@ -9,23 +9,24 @@ const topTilesRow = document.querySelector(".topTilesRow"),
       fleetContainer = document.querySelector("#animFleetContainer");
 
 export const registerEvents = (topLevelSections) => {
-const headerTiles = gsap.utils.toArray(topTilesRow.querySelectorAll(".tlhTile"));
+  const headerTiles = gsap.utils.toArray(topTilesRow.querySelectorAll(".tlhTile"));
 
   fleetContainer.addEventListener('click', function()
     { expandFleetToTiles(this, headerTiles) })
 
-  topTilesRow.addEventListener('click', function(e) {
-    
-    if (e.target.classList.contains('tlhTile')) {
-
-      let caller = e.target,
-          targetId = caller.dataset.target,
-          sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
-      sectionToggler(caller, headerTiles, topTilesRow, mainContentRow)
-      loadContentWindowInGrid(sectionToLoad, mainContentRow)
-    }
-  })
-
   mainContentRow.addEventListener('click', function(e) {
-      if (e.target.classList.contains('bx--tabs__nav-link')) {
-        switchTabPanels(e.target) } }) }
+    if (e.target.classList.contains('bx--tabs__nav-link')) {
+        switchTabPanels(e.target) } })
+
+  for (let tile of headerTiles) {
+    tile.addEventListener('click', function() {
+      if (!this.classList.contains('active')) {
+      let caller = this,
+          targetId = this.dataset.target,
+          sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
+
+      loadContentWindowInRow(sectionToLoad, mainContentRow)
+        .then( function() { displayContentWindow(targetId) })
+      }
+  })}
+}

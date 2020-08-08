@@ -5,6 +5,17 @@
   <meta name="viewport" content="width-device-width, intial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+
+  <template id="top-level-section-tile">
+    <div class="bx--col " id="default-tile-col">
+      <div class="bx--aspect-ratio bx--aspect-ratio--1x1 ">
+        <a data-tile="clickable" class="bx--tile bx--tile--clickable  tlhTile" data-target="default">
+          <p class="label"><slot name="display-title">Default Text</slot></p>
+          <span class="iconContainer"></span>
+        </a>
+      </div>
+    </div>
+  </template>
 </head>
 <body>
 
@@ -27,5 +38,7 @@
     <span class="svgWrapper"></span>
     <div class="helperText"></div>
   </div>
+
+
 </body>
 </html>

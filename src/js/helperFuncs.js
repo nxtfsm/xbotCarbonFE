@@ -1,17 +1,5 @@
 export const classToggler = (element, className) => { element.classList.toggle(className) }
 
-export const jsonTest = () => {
-  
-  console.log(data)
-}
-
-export const fetchJSONfromURL = url => {
-  return new Promise(
-    function ( resolver ) {
-
-    }
-  )
-}
 
 export const parseElementFromHTML = url => {
   return new Promise(

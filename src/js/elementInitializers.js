@@ -1,13 +1,15 @@
 // elementInitializers.js
-export const loadHeaderTilesInGrid = (sections, container) => {
+export const loadHeaderTilesInRow = (sections, container) => {
   let withOffset = true,
       tiles = createSectionHeadTiles(sections, withOffset);
   for (var i = 0; i < tiles.length; i++) { container.appendChild(tiles[i]) }
 }
 
-export const loadContentWindowInGrid = (section, container) => {
-  let contentWindow = initContentSection(section)
-  container.append(contentWindow)
+export const loadContentWindowInRow = (section, container) => {
+  return new Promise((onResolve) => {
+  container.append(initContentSection(section))
+    return onResolve()
+  })
 }
 
 const createSectionHeadTiles = (sections, withOffset) => {
@@ -24,8 +26,7 @@ const initSectionHeadTile = section => {
       clone = initCloneFromTemplate(section.mainId, templateId),
       tile = clone.querySelector('a.bx--tile'),
       label = tile.querySelector('.label');
-
-      tile.dataset.target=section.mainId
+      tile.dataset.target = section.mainId
       label.innerHTML = section.displayTitle
       return clone
 }
@@ -96,5 +97,6 @@ const initCloneFromTemplate = (forId, templateId) => {
           topElem = clone.children[0];
 
       topElem.id = `${forId}-${templateId}`
+      topElem.dataset.target = forId
       return clone
 }
