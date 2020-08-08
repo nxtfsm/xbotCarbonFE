@@ -1,0 +1,8 @@
+---
+  deployment:
+    tasks:
+      - export DEPLOYPATH=/home3/xaviermi/public_html/xbot/
+      - /bin/cp dist/index.html $DEPLOYPATH
+      - /bin/cp dist/index.a6474c9e6e02922a4b32.js $DEPLOYPATH
+      - /bin/cp dist/vendors~index.6c25f339098f4a3edf1a.js $DEPLOYPATH
+      - /bin/cp -R dist/templates $DEPLOYPATH
