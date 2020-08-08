@@ -22,7 +22,7 @@ export const displayContentWindow = callerId => {
 
 const firstDisplayContentWindow = fromTile => {
   let anim = gsap.timeline()
-    .add(collapseTileRow(fromTile))
+    .add(reduceTileRow(fromTile))
     .add(expandContentWindow(mainContentRow.children[0]))
   return anim
 }
@@ -53,21 +53,32 @@ const collapseContentWindow = outgoingWindow => {
   return anim
 }
 
-const collapseTileRow = caller => {
+const reduceTileRow = caller => {
   let tiles = gsap.utils.toArray(topTilesRow.querySelectorAll('.tlhTile')),
       cols = gsap.utils.toArray(topTilesRow.querySelectorAll('.bx--col')),
+      labels = gsap.utils.toArray(topTilesRow.querySelectorAll('.label')),
+      icons = gsap.utils.toArray(topTilesRow.querySelectorAll('.iconContainer')),
       callerIdx = tiles.indexOf(caller),
-      anim = gsap.timeline()
+      anim = gsap.timeline({ defaults: {
+        stagger: {amount: .2, from: callerIdx, ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"}
+      }})
         .add(flipIcon(caller))
-        .to(tiles, {
-          height: "4.5rem",
-          stagger: {amount: .2, from: callerIdx, ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"}, duration: .7}, '<.2')
-        .to(topTilesRow, {height: "4.5rem", duration: .7}, "<")
-        .set(mainContentRow, {scaleX: 1, height: "80vh"})
+        .to(tiles, { height: "4.5rem", duration: .8}, '<.2')
+        .add(restyleText(labels), '<')
+        .to(icons, { bottom: "1rem" }, '<')
+        .to(topTilesRow, {height: "4.5rem", duration: .8}, "<")
+        .set(mainContentRow, {visibility: "visible"})
         .set(cols, {height: "4.5rem"});
       return anim
 }
 
+const restyleText = text => {
+  let anim = gsap.timeline()
+    .to(text, {opacity: 0, scaleY: .1, duration: .4, transformOrigin: "bottom center"})
+    .set(text, {fontSize: "1.75rem", lineHeight: "2.25rem", fontWeight: 400})
+    .to(text, {opacity: 1, scaleY: 1, duration: .4, transformOrigin: "bottom center"});
+  return anim
+}
 
 const flipIcon = caller => {
   let icon = caller.querySelector(".iconContainer"),

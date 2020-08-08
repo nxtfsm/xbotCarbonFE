@@ -20,12 +20,13 @@ $carbon--theme: $carbon--theme--g90;
     //z-index: 2;
 
     .label {
-      @include carbon--type-style("expressive-heading-04", true);
+      @include carbon--type-style("expressive-heading-05", true);
       position: absolute;
       max-width: 70%;
       bottom: 1rem;
       left: 1rem;
       color: $text-01;
+      //font-size: 3.5vw;
       opacity: 0;
       }
     .iconContainer {
@@ -34,7 +35,7 @@ $carbon--theme: $carbon--theme--g90;
       width: 2rem;
       height: 2rem;
       position: absolute;
-      bottom: 1rem;
+      bottom: 1.5rem;
       right: 1rem;
       opacity: 0;
       //z-index: 2;

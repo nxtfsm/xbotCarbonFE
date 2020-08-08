@@ -10,12 +10,10 @@ $carbon--theme: $carbon--theme--g90;
 @import "../../node_modules/carbon-components/scss/components/tabs/tabs";
 
 .bx--row.mainContentRow {
-  height: 1vh; // initial
+  height: 80vh; // initial
   max-height: 80vh;
   margin-top: 1rem;
-  transform: scaleX(.01); // initial
-  //background-color: $ui-01;
-  //opacity: 0;
+  visibility: collapse;
   padding: 0 1rem;
 }
 
@@ -39,11 +37,15 @@ $carbon--theme: $carbon--theme--g90;
 
   .bx--tabs__nav-item {
     background-color: $ui-01;
-
+    cursor: pointer;
   }
 
   .bx--tabs__nav-item:hover {
     background-color: $ui-04;
+  }
+
+  .bx--tabs__nav-item + .bx--tabs__nav-item {
+    box-shadow: none;
   }
 
   .bx--tabs__nav-item--selected, .bx--tabs__nav-item--selected:hover {
