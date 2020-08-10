@@ -1,9 +1,7 @@
 // elementInitializers.js
-import { initCloneFromTemplate } from './templateLoader'
-
 export const loadHeaderTilesInRow = (sections, container) => {
-  let withOffset = true,
-      tiles = createSectionHeadTiles(sections);
+  const withOffset = true,
+        tiles = createSectionHeadTiles(sections);
 
   if (withOffset) {
       const firstCol = tiles[0].children[0],

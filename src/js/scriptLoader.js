@@ -1,4 +1,4 @@
-let scriptObjects = {
+const scriptObjects = {
   urls : [ "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js", "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/ScrollTrigger.min.js", "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/MotionPathPlugin.min.js", "https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js" ],
   configs: [ {
     url: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js",

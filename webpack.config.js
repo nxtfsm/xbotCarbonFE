@@ -75,6 +75,10 @@ module.exports = {
       template: "./src/templates/tabListHead.html",
       filename: "./templates/tabListHead.html"
     }),
+    new HtmlWebpackPlugin({
+      template: "./src/templates/multiselect.html",
+      filename: "./templates/multiselect.html"
+    }),
     new ResourceHintWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",

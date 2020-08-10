@@ -2,7 +2,7 @@
 import { parseElementFromHTML, insertElementInHead } from "./helperFuncs"
 
 export const loadTemplatesFromURLs = () => {
-  let urls = [/*"./templates/topLevelSectionTile.html",*/ "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html", "./templates/tabListHead.html", "./templates/tabContentPanel.html"];
+  let urls = [/*"./templates/topLevelSectionTile.html",*/ "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html", "./templates/tabListHead.html", "./templates/tabContentPanel.html", "./templates/multiselect.html"];
   for (var i = 0; i < urls.length; i++)
     { parseElementFromHTML(urls[i]).then(nodeList => {
       for (const node of nodeList) { insertElementInHead(node) } }) }

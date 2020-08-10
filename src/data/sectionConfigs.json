@@ -7,17 +7,22 @@
       {
         "id": "internalCodeDemos",
         "title": "Xavier Made",
-        "contentX": "Locally Sourced Tutorials & Livestreams.",
         "content": {
           "defaultStr": "Locally Sourced Tutorials & Livestreams.",
           "panelTemplate": "some-id",
-          "sourceJSON": "some-url"
+          "sourceJSON": "some-url",
+          "filters": {
+            "#python": "Python",
+            "#htmlCss": "HTML & CSS",
+            "#vanillaJS": "JavaScript",
+            "#arduino": "Arduino",
+            "#bash": "$Bash"
+          }
         }
       },
       {
         "id": "externalCodeDemos",
         "title": "External",
-        "contentX": "Great Stuff from the wide wide world of sports.",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
           "panelTemplate": "some-id",
@@ -42,7 +47,6 @@
       {
         "id": "xavierDevicesTechSupport",
         "title": "Xavier 1:1",
-        "contentX": "Tools for making Xavier Pinebooks go.",
         "content": {
           "defaultStr": "Tools for making Xavier Pinebooks go.",
           "panelTemplate": "some-id",
@@ -52,7 +56,6 @@
       {
         "id": "personalDevicesTechSupport",
         "title": "Other Devices",
-        "contentX": "Guides to get coding on your own machine.",
         "content": {
           "defaultStr": "Guides to get coding on your own machine.",
           "panelTemplate": "some-id",
@@ -62,7 +65,6 @@
       {
         "id": "learningResourcesTechSupport",
         "title": "More Resources",
-        "contentX": "Explore & become an IT ninja admin mage overlord.",
         "content": {
           "defaultStr": "Explore & become an IT ninja admin mage overlord.",
           "panelTemplate": "some-id",

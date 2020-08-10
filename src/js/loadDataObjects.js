@@ -1,8 +1,5 @@
 // loadDataObjects.js
 import * as sectionConfigData from '../data/sectionConfigs.json'
-import { initSections } from './sectionConfigs'
+import { initSections } from './models/topLevelSectionObjects'
 
-export const loadSectionObjects = () => {
-  const sectionConfigs = sectionConfigData.default;
-  return initSections(sectionConfigs)
-}
+export const loadSectionObjects = () => {return initSections(sectionConfigData.default)}
