@@ -2,51 +2,80 @@
   "codeDemos": {
     "mainId": "codeDemos",
     "displayTitle": "Code Demos",
+    "options": {
     "tabs": [
       {
         "id": "internalCodeDemos",
         "title": "Xavier Made",
-        "content": "Locally Sourced Tutorials & Livestreams."
+        "contentX": "Locally Sourced Tutorials & Livestreams.",
+        "content": {
+          "defaultStr": "Locally Sourced Tutorials & Livestreams.",
+          "panelTemplate": "some-id",
+          "sourceJSON": "some-url"
+        }
       },
       {
         "id": "externalCodeDemos",
         "title": "External",
-        "content": "Great Stuff from the wide wide world of sports."
+        "contentX": "Great Stuff from the wide wide world of sports.",
+        "content": {
+          "defaultStr": "Great Stuff from the wide wide world of sports.",
+          "panelTemplate": "some-id",
+          "sourceJSON": "some-url"
+        }
       }
     ]
+  }
   },
 
   "projectGallery": {
     "mainId": "projectGallery",
     "displayTitle": "Project Gallery",
-    "tabs": null
+    "options": {}
   },
 
   "techSupport": {
     "mainId": "techSupport",
     "displayTitle": "Tech Support",
+    "options": {
     "tabs": [
       {
         "id": "xavierDevicesTechSupport",
         "title": "Xavier 1:1",
-        "content": "Tools for making Xavier Pinebooks go."
+        "contentX": "Tools for making Xavier Pinebooks go.",
+        "content": {
+          "defaultStr": "Tools for making Xavier Pinebooks go.",
+          "panelTemplate": "some-id",
+          "sourceJSON": "some-url"
+        }
       },
       {
         "id": "personalDevicesTechSupport",
         "title": "Other Devices",
-        "content": "Guides to get coding on your own machine."
+        "contentX": "Guides to get coding on your own machine.",
+        "content": {
+          "defaultStr": "Guides to get coding on your own machine.",
+          "panelTemplate": "some-id",
+          "sourceJSON": "some-url"
+        }
       },
       {
         "id": "learningResourcesTechSupport",
         "title": "More Resources",
-        "content": "Explore & become an IT ninja admin mage overlord."
+        "contentX": "Explore & become an IT ninja admin mage overlord.",
+        "content": {
+          "defaultStr": "Explore & become an IT ninja admin mage overlord.",
+          "panelTemplate": "some-id",
+          "sourceJSON": "some-url"
+        }
       }
     ]
+  }
   },
 
   "ourPlatforms": {
     "mainId": "ourPlatforms",
     "displayTitle": "Learn More",
-    "tabs" : null
+    "options": {}
   }
 }

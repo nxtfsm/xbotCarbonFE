@@ -9,6 +9,15 @@ $carbon--theme: $carbon--theme--g90;
 // Import tabs style after theme imported & set
 @import "../../node_modules/carbon-components/scss/components/tabs/tabs";
 
+sh-tab-content-panel {
+  height: 40vh;
+  background: #1E88E5;
+  .tabPanel {
+    background: #8848E5;
+    height: 40vh;
+  }
+}
+
 .bx--row.mainContentRow {
   height: 80vh; // initial
   max-height: 80vh;
@@ -33,6 +42,10 @@ $carbon--theme: $carbon--theme--g90;
     padding: 0;
     position: relative;
     flex-grow: 1;
+  }
+
+  .bx--tabs__nav {
+    cursor: pointer;
   }
 
   .bx--tabs__nav-item {

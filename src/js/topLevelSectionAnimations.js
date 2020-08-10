@@ -2,6 +2,24 @@
 import { classToggler } from './helperFuncs.js'
 import { topTilesRow, mainContentRow } from '../index.js'
 
+export const expandTileBannerRow = tiles => {
+    let labels = [],
+        icons = [],
+        anim = gsap.timeline({
+          defaults: { duration: .7, ease: 'cubic-bezier(.62, .1, .8, 1)',
+          stagger: { amount: .2, ease: 'cubic-bezier(.62, .1, .8, 1)', from: 1} } });
+
+    for (let tile of tiles) {
+      labels.push(tile.querySelector('.label'))
+      icons.push(tile.querySelector('.iconContainer')) }
+
+    anim.to(tiles, { width: "100%", visibility: "visible", opacity: 1 }, "-=.1")
+        .to(tiles, { height: "100%" }, '<.4')
+        .to(labels, { opacity: 1, transformOrigin: "bottom left" }, "-=.2")
+        .to(icons, { opacity: 1, transformOrigin: "bottom left"}, "<")
+    return anim
+  }
+
 export const displayContentWindow = callerId => {
     let callerCol = topTilesRow.querySelector(`[data-target=${callerId}]`),
         callerTile = callerCol.querySelector('.tlhTile'),
@@ -83,24 +101,5 @@ const restyleText = text => {
 const flipIcon = caller => {
   let icon = caller.querySelector(".iconContainer"),
       anim = gsap.to(icon, { rotateZ: "+=180deg", transformOrigin: "center center" });
-      console.log('caller inside flipIcon: ', caller)
-      return anim
+  return anim
 }
-
-export const expandTileBannerRow = tiles => {
-    let labels = [],
-        icons = [],
-        anim = gsap.timeline({
-          defaults: { duration: .7, ease: 'cubic-bezier(.62, .1, .8, 1)',
-          stagger: { amount: .2, ease: 'cubic-bezier(.62, .1, .8, 1)', from: 1} } });
-
-    for (let tile of tiles) {
-      labels.push(tile.querySelector('.label'))
-      icons.push(tile.querySelector('.iconContainer')) }
-
-    anim.to(tiles, { width: "100%", visibility: "visible", opacity: 1 }, "-=.1")
-        .to(tiles, { height: "100%" }, '<.4')
-        .to(labels, { opacity: 1, transformOrigin: "bottom left" }, "-=.2")
-        .to(icons, { opacity: 1, transformOrigin: "bottom left"}, "<")
-    return anim
-  }

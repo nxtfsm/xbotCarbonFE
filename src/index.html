@@ -16,11 +16,22 @@
       </div>
     </div>
   </template>
+
+  <template id="sh-top-level-section-tile" class="shadow">
+    <div slot="tileColumn" class="bx--col " id="default-tile-col">
+      <div slot="aspectBox" class="bx--aspect-ratio bx--aspect-ratio--1x1 ">
+        <a slot="tileSlot" data-tile="clickable" class="bx--tile bx--tile--clickable  tlhTile" data-target="default">
+          <p slot="tileLabel" class="label"><slot name="display-title">Default Text</slot></p>
+          <span slot="tileIcon" class="iconContainer"></span>
+        </a>
+      </div>
+    </div>
+  </template>
 </head>
 <body>
 
 <div class ="bx--grid" id="mainBody">
-  <div class="bx--row topTilesRow" id="mainSectionContainer"></div>
+  <div class="bx--row topTilesRow" id="bannerTilesContainer"></div>
   <div class="bx--row mainContentRow" id="mainContentContainer"></div>
 </div>
 

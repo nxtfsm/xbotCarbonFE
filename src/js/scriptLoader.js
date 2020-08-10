@@ -22,7 +22,7 @@ export const loadScripts = () => {
       script(scriptObjects.urls, function() {
         gsap.registerPlugin(ScrollTrigger)
         gsap.registerPlugin(MotionPathPlugin)
-        console.log("plugins registered ok")
+        //console.log("plugins registered ok")
         completionHandler()
       })
     })
