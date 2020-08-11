@@ -1,5 +1,5 @@
 // tabPanelAnimations.js
-import { classToggler } from './helperFuncs.js'
+import { classToggler } from '../helperFuncs'
 
 export const switchTabPanels = (caller) => {
   if (!caller.parentElement.classList.contains("bx--tabs__nav-item--selected")) {

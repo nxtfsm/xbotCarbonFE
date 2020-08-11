@@ -1,8 +1,6 @@
 // registerEvents.js
-import { expandFleetToTiles } from './fleetAnimations'
+import { fleetToTiles, displayMainContent, switchTabs } from './animations/animations'
 import { loadContentWindowInRow } from './elementInitializers'
-import { displayContentWindow } from './topLevelSectionAnimations'
-import { switchTabPanels } from './tabPanelAnimations'
 
 const topTilesRow = document.querySelector(".topTilesRow"),
       mainContentRow = document.querySelector(".mainContentRow"),
@@ -12,11 +10,10 @@ export const registerEvents = (topLevelSections) => {
   const headerTiles = gsap.utils.toArray(topTilesRow.querySelectorAll(".tlhTile"));
 
   fleetContainer.addEventListener('click', function()
-    { expandFleetToTiles(this, headerTiles) })
+    { fleetToTiles(this, headerTiles) })
 
   mainContentRow.addEventListener('click', function(e) {
-    if (e.target.classList.contains('bx--tabs__nav-link')) {
-        switchTabPanels(e.target) } })
+    if (e.target.classList.contains('bx--tabs__nav-link')) { switchTabs(e.target) } })
 
   for (let tile of headerTiles) {
     tile.addEventListener('click', function() {
@@ -24,9 +21,7 @@ export const registerEvents = (topLevelSections) => {
       let caller = this,
           targetId = this.dataset.target,
           sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
-
       loadContentWindowInRow(sectionToLoad, mainContentRow)
-        .then( function() { displayContentWindow(targetId) })
-      }
-  })}
+          .then( function() { displayMainContent(targetId) }) }
+        })}
 }

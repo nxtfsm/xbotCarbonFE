@@ -1,6 +1,6 @@
 // navElementObjects.js
 import { initCloneFromTemplate } from '../templateLoader'
-import { addEventHandlers } from '../multiselectAnimations'
+import { addEventHandlers } from '../animations/multiselectAnimations'
 
 
 export class MultiSelect {

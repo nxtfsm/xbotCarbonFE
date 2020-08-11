@@ -1,6 +1,5 @@
 // fleetAnimations.js
-import { registerAnimFX } from './registerAnimations'
-import { expandTileBannerRow } from './topLevelSectionAnimations'
+import { registerAnimations, expandTiles } from './animations'
 
 let helperMessages = ["(scroll to start)", "(click to skip ahead)"],
     helperText = document.querySelector("#animFleetContainer .helperText");
@@ -8,7 +7,7 @@ let helperMessages = ["(scroll to start)", "(click to skip ahead)"],
 export const loadFleetAnimation = container => {
   let graphicWrappers = container.querySelectorAll(".svgWrapper")
 
-  registerAnimFX().then( () => {
+  registerAnimations().then( () => {
     let tl = gsap.timeline( { repeat: 0, repeatDelay: 0, yoyo: true,
       defaults: { duration: .7, ease: "cubic-bezier(0.4, 0.14, 0.3, 1)" },
         smoothChildTiming: true }),
@@ -28,7 +27,7 @@ export const expandFleetToTiles = (container, toTiles) => {
   helperText.remove()
   tl.add(quickFleetCollapser(container))
   tl.add(quickFleetToTiles(container, toTiles))
-  tl.add(expandTileBannerRow(toTiles), '-=.8')
+  tl.add(expandTiles(toTiles), '-=.8')
 }
 
 let helperTextsAnimSwitcher = () => {
@@ -83,6 +82,7 @@ let quickFleetToTiles = (container, tiles) => {
         {opacity: 0, rotateZ: "-=30deg", x: "+=" + (delta.x+48), y: "+=" + delta.y}, '<') }
 
     anim.to(graphics, {opacity: 0, stagger: {amount: .2}, display: "none" }, "-=.2")
+    //anim.add(expandTiles(tiles))
 
     return anim
 }

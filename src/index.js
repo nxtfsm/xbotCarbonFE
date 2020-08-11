@@ -9,7 +9,7 @@ import { loadScripts } from './js/scriptLoader'
 import { loadHeaderTilesInRow } from './js/elementInitializers'
 import { loadIcons } from './js/iconLoader'
 import { registerEvents } from './js/registerEvents'
-import { loadFleetAnimation } from './js/fleetAnimations'
+import { fleetAnimation } from './js/animations/animations'
 import { setBackgroundImage } from './js/mapbox'
 
 export const topLevelSections = loadSections(),
@@ -24,5 +24,5 @@ loadScripts().then( () => {
   loadHeaderTilesInRow(topLevelSections, topTilesRow)
   loadIcons()
   registerEvents(topLevelSections)
-  loadFleetAnimation(fleetGraphicContainer)
+  fleetAnimation(fleetGraphicContainer)
 })

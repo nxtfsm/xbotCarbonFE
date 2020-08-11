@@ -1,6 +1,6 @@
 // topLevelSectionAnimations.js
-import { classToggler } from './helperFuncs.js'
-import { topTilesRow, mainContentRow } from '../index.js'
+import { classToggler } from '../helperFuncs'
+import { topTilesRow, mainContentRow } from '../../index'
 
 export const expandTileBannerRow = tiles => {
     let labels = [],
