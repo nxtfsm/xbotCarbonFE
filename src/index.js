@@ -10,13 +10,16 @@ import { loadHeaderTilesInRow } from './js/elementInitializers'
 import { loadIcons } from './js/iconLoader'
 import { registerEvents } from './js/registerEvents'
 import { loadFleetAnimation } from './js/fleetAnimations'
+import { setBackgroundImage } from './js/mapbox'
 
 export const topLevelSections = loadSections(),
               fleetGraphicContainer = document.getElementById("animFleetContainer"),
               topTilesRow = document.getElementById("bannerTilesContainer"),
               mainContentRow = document.querySelector(".mainContentRow");
 
+setBackgroundImage()
 loadTemplates()
+
 loadScripts().then( () => {
   loadHeaderTilesInRow(topLevelSections, topTilesRow)
   loadIcons()

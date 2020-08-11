@@ -15,7 +15,7 @@
             "#python": "Python",
             "#htmlCss": "HTML & CSS",
             "#vanillaJS": "JavaScript",
-            "#arduino": "Arduino",
+            "#c++": "C++",
             "#bash": "$Bash"
           }
         }
@@ -25,7 +25,7 @@
         "title": "External",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
-          "panelTemplate": "some-id",
+          "panelTemplate": "accordion-content-panel",
           "sourceJSON": "some-url"
         }
       }

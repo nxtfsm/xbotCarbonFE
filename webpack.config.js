@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin"),
       MiniCssExtractPlugin = require("mini-css-extract-plugin"),
       ResourceHintWebpackPlugin = require('resource-hints-webpack-plugin'),
+      Dotenv = require('dotenv-webpack'),
       path = require('path');
 
 module.exports = {
@@ -51,6 +52,7 @@ module.exports = {
     ]
   },
   plugins : [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
