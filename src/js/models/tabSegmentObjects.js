@@ -1,5 +1,5 @@
 // tabSegmentObjects.js
-import { initCloneFromTemplate } from '../templateLoader'
+import { cloneTemplate } from '../constructors/loaders'
 import { MultiSelect } from './navElementObjects'
 
 export class TabSegment {
@@ -19,7 +19,7 @@ export class TabSegment {
   static create(tab) { return new TabSegment(tab) }
 
   makeNavHeadHTML() {
-    let clone = initCloneFromTemplate(this.id, this.navHeadTemplateId),
+    let clone = cloneTemplate(this.id, this.navHeadTemplateId),
         link = clone.querySelector('a');
     clone.children[0].dataset.target = `tab-panel-${this.id}`
     link.id = `tab-link-${this.id}`
@@ -29,7 +29,7 @@ export class TabSegment {
 
   makePanelHTML() {
     let templateId = "tab-content-panel",
-        clone = initCloneFromTemplate(this.id, this.panelTemplateId),
+        clone = cloneTemplate(this.id, this.panelTemplateId),
         panelContent = clone.querySelector('.tabPanelContent'),
         defaultText = clone.querySelector('.sampleText');
     clone.children[0].id = `tab-panel-${this.id}`

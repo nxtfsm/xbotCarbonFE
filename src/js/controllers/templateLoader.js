@@ -1,5 +1,5 @@
 // templateLoader.js
-import { parseElementFromHTML, insertElementInHead } from "./helperFuncs"
+import { parseElementFromHTML, insertElementInHead } from "../helperFuncs"
 
 export const loadTemplatesFromURLs = () => {
   let urls = [/*"./templates/topLevelSectionTile.html",*/ "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html", "./templates/tabListHead.html", "./templates/tabContentPanel.html", "./templates/multiselect.html"];
@@ -8,7 +8,7 @@ export const loadTemplatesFromURLs = () => {
       for (const node of nodeList) { insertElementInHead(node) } }) }
   }
 
-export const initCloneFromTemplate = (forId, templateId) => {
+export const initClone = (forId, templateId) => {
         let template = document.getElementById(templateId),
             clone = template.content.cloneNode(true),
             topElem = clone.children[0];

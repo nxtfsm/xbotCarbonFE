@@ -1,6 +1,6 @@
 // registerEvents.js
-import { fleetToTiles, displayMainContent, switchTabs } from './constructors/animations'
-import { loadContentWindowInRow } from './elementInitializers'
+import { fleetToTiles, displayMainContent, switchTabs } from '../constructors/animations'
+import { setContentWindow } from '../constructors/loaders'
 
 const topTilesRow = document.querySelector(".topTilesRow"),
       mainContentRow = document.querySelector(".mainContentRow"),
@@ -21,7 +21,7 @@ export const registerEvents = (topLevelSections) => {
       let caller = this,
           targetId = this.dataset.target,
           sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
-      loadContentWindowInRow(sectionToLoad, mainContentRow)
+      setContentWindow(sectionToLoad, mainContentRow)
           .then( function() { displayMainContent(targetId) }) }
         })}
 }

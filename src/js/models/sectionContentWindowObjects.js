@@ -1,5 +1,5 @@
 // sectionContentWindowObjects.js
-import { initCloneFromTemplate } from '../templateLoader'
+import { cloneTemplate } from '../constructors/loaders'
 import { TabSegment } from './tabSegmentObjects'
 
 export class ContentWindow {
@@ -31,9 +31,9 @@ export class TabbedContentWindow {
   static create(section) { return new TabbedContentWindow(section) }
 
   makeHTML() {
-    let clone = initCloneFromTemplate(this.mainId, this.sectionTemplateId),
+    let clone = cloneTemplate(this.mainId, this.sectionTemplateId),
         contentWindow = clone.children[0],
-        innerClone = initCloneFromTemplate(this.mainId, this.templateId),
+        innerClone = cloneTemplate(this.mainId, this.templateId),
         tabHeadsList = innerClone.querySelector('ul'),
         tabPanelsContainer = innerClone.querySelector('.panelsContainer');
 

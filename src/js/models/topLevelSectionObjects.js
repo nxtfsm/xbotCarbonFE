@@ -1,5 +1,5 @@
 // topLevelSectionObjects.js
-import { initCloneFromTemplate } from '../templateLoader'
+import { cloneTemplate } from '../constructors/loaders'
 import { ContentWindow, TabbedContentWindow } from './sectionContentWindowObjects'
 
 export const initSections = fromConfigs => {
@@ -29,7 +29,7 @@ class TopLevelSection {
 
   makeHeaderTileHTML() {
     let templateId = "top-level-section-tile",
-        clone = initCloneFromTemplate(this.mainId, templateId),
+        clone = cloneTemplate(this.mainId, templateId),
         tile = clone.querySelector('a.bx--tile'),
         label = tile.querySelector('.label');
     tile.dataset.target = this.mainId

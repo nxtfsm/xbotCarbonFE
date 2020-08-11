@@ -1,5 +1,5 @@
 // elementInitializers.js
-export const loadHeaderTilesInRow = (sections, container) => {
+export const loadHeaderTilesRow = (sections, container) => {
   const withOffset = true,
         tiles = createSectionHeadTiles(sections);
 
@@ -12,7 +12,7 @@ export const loadHeaderTilesInRow = (sections, container) => {
     { container.appendChild(tiles[i]) }
 }
 
-export const loadContentWindowInRow = (section, container) => {
+export const loadContentRow = (section, container) => {
   return new Promise((onResolve) => {
     container.append(makeSectionHTML(section))
     return onResolve() })
