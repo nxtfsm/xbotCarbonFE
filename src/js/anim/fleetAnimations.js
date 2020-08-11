@@ -1,5 +1,5 @@
 // fleetAnimations.js
-import { registerAnimations, expandTiles } from './animations'
+import { registerAnimations, expandTiles } from '../constructors/animations'
 
 let helperMessages = ["(scroll to start)", "(click to skip ahead)"],
     helperText = document.querySelector("#animFleetContainer .helperText");

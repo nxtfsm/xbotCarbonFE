@@ -1,9 +1,9 @@
 // animations.js
-import { registerAnimFX } from './registerAnimations'
-import { loadFleetAnimation, expandFleetToTiles} from './fleetAnimations'
-import { addEventHandlers } from './multiselectAnimations'
-import { switchTabPanels } from './tabPanelAnimations'
-import { expandTileBannerRow, displayContentWindow } from './topLevelSectionAnimations'
+import { registerAnimFX } from '../anim/registerAnimations'
+import { loadFleetAnimation, expandFleetToTiles} from '../anim/fleetAnimations'
+import { addEventHandlers } from '../anim/multiselectAnimations'
+import { switchTabPanels } from '../anim/tabPanelAnimations'
+import { expandTileBannerRow, displayContentWindow } from '../anim/topSectionAnimations'
 
 export const registerAnimations = () => { return registerAnimFX() },
              fleetAnimation = (cntnr) => { loadFleetAnimation(cntnr) },

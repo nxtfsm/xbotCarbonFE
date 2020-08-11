@@ -3,26 +3,20 @@ import './styles/fleetGraphic.scss'
 import './styles/stickyButton.scss'
 import './styles/rowMainTopTiles.scss'
 import './styles/rowMainContent.scss'
-import { loadSectionObjects as loadSections } from './js/loadDataObjects'
-import { loadTemplatesFromURLs as loadTemplates } from './js/templateLoader'
-import { loadScripts } from './js/scriptLoader'
-import { loadHeaderTilesInRow } from './js/elementInitializers'
-import { loadIcons } from './js/iconLoader'
-import { registerEvents } from './js/registerEvents'
-import { fleetAnimation } from './js/animations/animations'
-import { setBackgroundImage } from './js/mapbox'
+import * as loader from './js/constructors/loaders'
+import { fleetAnimation } from './js/constructors/animations'
 
-export const topLevelSections = loadSections(),
-              fleetGraphicContainer = document.getElementById("animFleetContainer"),
-              topTilesRow = document.getElementById("bannerTilesContainer"),
-              mainContentRow = document.querySelector(".mainContentRow");
+export const topLevelSections = loader.getSections(),
+             fleetGraphicContainer = document.getElementById("animFleetContainer"),
+             topTilesRow = document.getElementById("bannerTilesContainer"),
+             mainContentRow = document.querySelector(".mainContentRow");
 
-setBackgroundImage()
-loadTemplates()
+loader.setMapBG()
+loader.setTemplates()
 
-loadScripts().then( () => {
-  loadHeaderTilesInRow(topLevelSections, topTilesRow)
-  loadIcons()
-  registerEvents(topLevelSections)
+loader.initScripts().then( () => {
+  loader.setHeaderTiles(topLevelSections, topTilesRow)
+  loader.setIcons()
+  loader.setEventListeners(topLevelSections)
   fleetAnimation(fleetGraphicContainer)
 })

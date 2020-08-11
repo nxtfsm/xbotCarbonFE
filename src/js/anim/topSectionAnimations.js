@@ -1,4 +1,4 @@
-// topLevelSectionAnimations.js
+// topSectionAnimations.js
 import { classToggler } from '../helperFuncs'
 import { topTilesRow, mainContentRow } from '../../index'
 

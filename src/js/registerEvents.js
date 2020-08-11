@@ -1,5 +1,5 @@
 // registerEvents.js
-import { fleetToTiles, displayMainContent, switchTabs } from './animations/animations'
+import { fleetToTiles, displayMainContent, switchTabs } from './constructors/animations'
 import { loadContentWindowInRow } from './elementInitializers'
 
 const topTilesRow = document.querySelector(".topTilesRow"),

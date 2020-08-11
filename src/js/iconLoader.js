@@ -3,8 +3,6 @@ import chevronDown from '@carbon/icons/es/chevron--down/32';
 import { CargoShip } from '@carbon/pictograms'
 import { IdBadge } from '@carbon/pictograms'
 
-
-
 export const loadIcons = () => {
   for (let elem of document.querySelectorAll('.iconContainer')) {
     loadIconToElem(chevronDown, elem)
@@ -19,12 +17,8 @@ export const loadIcons = () => {
 
     IdBadge.attrs.width = "64"
     IdBadge.attrs.height = "64"
-    //IdBadge.attrs.path.fill = "#f4f4f4"
     loadIconToElem(IdBadge, elem)
   }
-
-
-
 }
 
 const loadIconToElem = (icon, elem) => {

@@ -1,6 +1,6 @@
 // navElementObjects.js
 import { initCloneFromTemplate } from '../templateLoader'
-import { addEventHandlers } from '../animations/multiselectAnimations'
+import { addMultiSelectEvents } from '../constructors/animations'
 
 
 export class MultiSelect {
@@ -20,7 +20,7 @@ export class MultiSelect {
         clone = initCloneFromTemplate(this.parentId, this.templateId),
         listbox = clone.querySelector("[role='listbox']");
     this.items.map(item => { listbox.append(item.makeHTML()) })
-    addEventHandlers(clone)
+    addMultiSelectEvents(clone)
     return clone
   }
 
