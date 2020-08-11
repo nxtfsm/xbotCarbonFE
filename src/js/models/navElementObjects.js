@@ -1,6 +1,6 @@
 // navElementObjects.js
 import { initCloneFromTemplate } from '../templateLoader'
-import { addAnimations } from '../multiselectAnimations'
+import { addEventHandlers } from '../multiselectAnimations'
 
 
 export class MultiSelect {
@@ -20,7 +20,7 @@ export class MultiSelect {
         clone = initCloneFromTemplate(this.parentId, this.templateId),
         listbox = clone.querySelector("[role='listbox']");
     this.items.map(item => { listbox.append(item.makeHTML()) })
-    addAnimations(clone)
+    addEventHandlers(clone)
     return clone
   }
 
@@ -40,7 +40,7 @@ class MultiSelectItem {
   makeHTML() {
     let templateId = this.templateId,
         clone = initCloneFromTemplate(this.target, this.templateId),
-        labelText = clone.querySelector(".bx--checkbox-label-text");
+        labelText = clone.querySelector(".bx--checkbox-label");
     labelText.innerHTML = this.label
     return clone
   }

@@ -12,11 +12,11 @@
           "panelTemplate": "some-id",
           "sourceJSON": "some-url",
           "filters": {
-            "#python": "Python",
-            "#htmlCss": "HTML & CSS",
-            "#vanillaJS": "JavaScript",
-            "#c++": "C++",
-            "#bash": "$Bash"
+            "python": "Python",
+            "htmlCss": "HTML & CSS",
+            "vanillaJS": "JavaScript",
+            "c++": "C++",
+            "bash": "$Bash"
           }
         }
       },

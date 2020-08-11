@@ -1,13 +1,16 @@
 // multiselectAnimations.js
 import { classToggler } from './helperFuncs'
 
-
-export const addAnimations = element => {
-  let topListBox = element.querySelector('.bx--list-box'),
-      topListButton = element.querySelector(".bx--list-box__field[role='button']");
+export const addEventHandlers = element => {
+  const topListBox = element.querySelector('.bx--list-box'),
+        topListButton = element.querySelector(".bx--list-box__field[role='button']"),
+        menuItems = element.querySelectorAll('.bx--list-box__menu-item');
 
       topListButton.addEventListener('click', function()
         { dropdownToggler(this, topListBox) })
+
+      for (let item of menuItems) { item.addEventListener('click', function() {
+        { itemSelector(this) } })}
 
       document.addEventListener('click', function(e) {
         if (topListButton.getAttribute('aria-expanded') == 'true') {
@@ -35,4 +38,9 @@ const dropdownToggler = (button, listBox) => {
       button.setAttribute('aria-expanded', expanded)
       button.setAttribute('aria-label', aLabel)
       gsap.to(menuIcon, { rotateZ: "+=180deg", transformOrigin: "center center" })
+}
+
+const itemSelector = menuItem => {
+  const checkbox = menuItem.querySelector('input')
+  if (checkbox.checked) { checkbox.checked = false} else { checkbox.checked = true }
 }

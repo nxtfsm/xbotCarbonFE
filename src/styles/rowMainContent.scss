@@ -9,6 +9,7 @@ $carbon--theme: $carbon--theme--g90;
 // Import tabs style after theme imported & set
 @import "../../node_modules/carbon-components/scss/components/tabs/tabs";
 @import "node_modules/carbon-components/scss/components/multi-select/multi-select";
+@import "node_modules/carbon-components/scss/components/checkbox/checkbox";
 
 .bx--row.mainContentRow {
   height: 80vh; // initial
