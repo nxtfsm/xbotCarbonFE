@@ -19,11 +19,8 @@ class TopLevelSection {
     this.displayTitle = conf.displayTitle
     this.config = Object.assign({}, config, conf.options)
 
-    if (this.config.tabs) {
-       this.config.contentWindow = TabbedContentWindow.create(this)
-       this.config.contentTemplateId = "tabbed-content-window"
-      }
-    }
+    if (this.config.tabs) {this.config.contentWindow = TabbedContentWindow.create(this)}
+  }
 
   static create(conf) { return new TopLevelSection(conf) }
 

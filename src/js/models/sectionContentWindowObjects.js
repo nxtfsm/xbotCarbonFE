@@ -4,26 +4,23 @@ import { TabSegment } from './tabSegmentObjects'
 
 export class ContentWindow {
   constructor(section) {
-    this.inSectionId = section.mainId
+    this.id = section.mainId
     this.type = "blank"
-    this.templateId = "main-content-section"
+    this.outerTemplateId = "main-content-section"
+    //this.outerTemplateId = section.config.outerTemplateId
   }
 
   static create(section) { return new ContentWindow(section) }
 
-  makeHTML() {
-    let clone = initCloneFromTemplate(this.inSectionId, this.templateId),
-        contentWindow = clone.children[0];
-    return clone
-  }
+  makeHTML() { return cloneTemplate(this.id, this.outerTemplateId) }
 }
 
 export class TabbedContentWindow {
   constructor(section) {
-    this.mainId = section.mainId
+    this.id = section.mainId
     this.type = "tabbed"
-    this.sectionTemplateId = section.config.outerTemplateId
-    this.templateId = "tabbed-content-window"
+    this.outerTemplateId = section.config.outerTemplateId
+    this.templateId = section.config.contentTemplateId
     this.tabs = section.config.tabs.map((tab) => { return TabSegment.create(tab) })
 
   }
@@ -31,14 +28,13 @@ export class TabbedContentWindow {
   static create(section) { return new TabbedContentWindow(section) }
 
   makeHTML() {
-    let clone = cloneTemplate(this.mainId, this.sectionTemplateId),
+    let clone = cloneTemplate(this.id, this.outerTemplateId),
         contentWindow = clone.children[0],
-        innerClone = cloneTemplate(this.mainId, this.templateId),
+        innerClone = cloneTemplate(this.id, this.templateId),
         tabHeadsList = innerClone.querySelector('ul'),
         tabPanelsContainer = innerClone.querySelector('.panelsContainer');
 
-    this.tabs.map(tab => { tabHeadsList.append( tab.makeNavHeadHTML() )})
-    this.tabs.map(tab => { tabPanelsContainer.append( tab.makePanelHTML() )})
+    this.tabs.map(tab => { tab.makeHTML(tabHeadsList, tabPanelsContainer) })
 
     let firstTab = tabHeadsList.children[0],
         firstPanel = tabPanelsContainer.children[0];
@@ -48,7 +44,6 @@ export class TabbedContentWindow {
     firstPanel.dataset.ariaHidden = false
 
     contentWindow.append(innerClone)
-    console.log(clone)
     return clone
   }
 }

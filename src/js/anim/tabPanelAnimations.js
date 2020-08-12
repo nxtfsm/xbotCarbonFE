@@ -18,7 +18,8 @@ export const switchTabPanels = (caller) => {
       { classToggler(tabHead, "bx--tabs__nav-item--selected") }
 
     for (const panel of panels)
-      { if (panel.hidden) { panel.hidden = false, panel.ariaHidden = false }
+      { console.log(panel)
+        if (panel.hidden) { panel.hidden = false, panel.ariaHidden = false }
         else { panel.hidden = true, panel.ariaHidden = true } }
   }
 }
