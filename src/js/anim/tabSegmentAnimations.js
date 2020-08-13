@@ -1,7 +1,7 @@
-// tabPanelAnimations.js
+// tabSegmentAnimations.js
 import { classToggler } from '../helperFuncs'
 
-export const switchTabPanels = (caller) => {
+export const switchTabSegments = (caller) => {
   if (!caller.parentElement.classList.contains("bx--tabs__nav-item--selected")) {
     let panelsCntnr = document.querySelector('.panelsContainer'),
         tabHeadsCntnr = document.querySelector('.tabHeadsContainer'),

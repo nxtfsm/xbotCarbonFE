@@ -3,7 +3,7 @@ import './styles/fleetGraphic.scss'
 import './styles/stickyButton.scss'
 import './styles/rowMainTopTiles.scss'
 import './styles/rowMainContent.scss'
-import './styles/expandableTilePanel.scss'
+import './styles/collapsingTileTabPanel.scss'
 import * as loader from './js/constructors/loaders'
 import { fleetAnimation } from './js/constructors/animations'
 

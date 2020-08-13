@@ -1,7 +1,7 @@
 // multiselectAnimations.js
 import { classToggler } from '../helperFuncs'
 
-export const addEventHandlers = element => {
+export const eventHandlers = element => {
   const topListBox = element.querySelector('.bx--list-box'),
         topListButton = element.querySelector(".bx--list-box__field[role='button']"),
         menuItems = element.querySelectorAll('.bx--list-box__menu-item');

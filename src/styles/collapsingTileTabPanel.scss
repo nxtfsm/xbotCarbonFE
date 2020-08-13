@@ -1,0 +1,89 @@
+// collapsingTileTabPanel.scss
+@import "node_modules/carbon-components/scss/globals/scss/colors";
+@import "node_modules/carbon-components/scss/globals/scss/theme";
+@import 'node_modules/@carbon/type/scss/type';
+
+$carbon--theme: $carbon--theme--g90;
+@include carbon--theme();
+
+@import 'node_modules/carbon-components/scss/components/tile/tile';
+
+.collapsingTileTabPanel.tabPanel {
+    overflow: auto;
+
+
+  .previewPaneCol {
+    visibility: collapse;
+    width: 0px;
+    background-color: $text-error;
+    right: 2rem;
+    bottom: 2rem;
+    position: fixed;
+
+
+
+  .previewPane {
+    background-color: $text-error;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  }
+
+  .topGrid {
+
+    display: flex;
+    flex-grow: 0;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 480px;
+    padding: 0rem;
+    padding-top: .5rem;
+
+
+  }
+
+  .bx--grid {
+    width: 100%;
+    padding: 0rem;
+
+  }
+
+  .bx--col {
+    padding: 0;
+  }
+  .collapsingTilesCol {
+    overflow: scroll;
+
+  }
+
+  .bx--row.tileRow {
+    margin: 0;
+    margin-bottom: 1rem;
+    flex-shrink: 1;
+    padding-right: 1rem;
+  }
+
+  .bx--tile--clickable {
+    height: 120px;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+
+  }
+
+  .bx--tile-content__above-the-fold {
+    background-color: $ui-04;
+
+    height: 120px;
+  }
+
+  .bx--tile-content__above-the-fold:hover {
+    background-color: $decorative-01;
+
+  }
+
+}

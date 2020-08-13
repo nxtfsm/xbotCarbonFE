@@ -82,8 +82,8 @@ module.exports = {
       filename: "./templates/multiselect.html"
     }),
     new HtmlWebpackPlugin({
-      template: "./src/templates/expandableTileTabPanel.html",
-      filename: "./templates/expandableTileTabPanel.html"
+      template: "./src/templates/collapsingTileTabPanel.html",
+      filename: "./templates/collapsingTileTabPanel.html"
     }),
     new ResourceHintWebpackPlugin(),
     new MiniCssExtractPlugin({

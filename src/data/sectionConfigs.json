@@ -10,7 +10,7 @@
         "title": "Xavier Made",
         "content": {
           "defaultStr": "Locally Sourced Tutorials & Livestreams.",
-          "panelTemplateId": "expandable-tile-content-panel",
+          "panelTemplateId": "collapsing-tile-tab-panel",
           "sourceJSON": "some-url",
           "filters": {
             "python": "Python",
@@ -26,7 +26,6 @@
         "title": "External",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
-          "panelTemplate": "accordion-content-panel",
           "sourceJSON": "some-url"
         }
       }
@@ -51,7 +50,7 @@
         "title": "Xavier 1:1",
         "content": {
           "defaultStr": "Tools for making Xavier Pinebooks go.",
-          "panelTemplate": "some-id",
+
           "sourceJSON": "some-url"
         }
         },
@@ -60,7 +59,7 @@
         "title": "Other Devices",
         "content": {
           "defaultStr": "Guides to get coding on your own machine.",
-          "panelTemplate": "some-id",
+
           "sourceJSON": "some-url"
         }
       },
@@ -69,7 +68,7 @@
         "title": "More Resources",
         "content": {
           "defaultStr": "Explore & become an IT ninja admin mage overlord.",
-          "panelTemplate": "some-id",
+
           "sourceJSON": "some-url"
         }
       }

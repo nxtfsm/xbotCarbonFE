@@ -11,6 +11,15 @@ $carbon--theme: $carbon--theme--g90;
 @import "node_modules/carbon-components/scss/components/multi-select/multi-select";
 @import "node_modules/carbon-components/scss/components/checkbox/checkbox";
 
+.menuRow {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 1rem 1rem;
+  background-color: $ui-02;
+  width: 100%;
+}
+
 .bx--row.mainContentRow {
   height: 80vh; // initial
   max-height: 80vh;
@@ -24,7 +33,6 @@ $carbon--theme: $carbon--theme--g90;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  padding-top: .75rem;
   opacity: 0;
   height: 5rem;
   transform: scaleX(.01);
@@ -34,18 +42,14 @@ $carbon--theme: $carbon--theme--g90;
   .bx--tab-content {
     padding: 0;
     position: relative;
-    flex-grow: 1;
+    height: calc(100% - 3rem);
     display: flex;
+
 
     .bx--form-item.multiselectDropdown {
       align-items: flex-end;
     }
 
-  }
-
-  .panelsContainer {
-    //height: calc(100% - 2rem);
-    //margin-top: 2rem;
   }
 
   .bx--tabs__nav {
@@ -69,6 +73,7 @@ $carbon--theme: $carbon--theme--g90;
   .bx--tabs__nav-item--selected, .bx--tabs__nav-item--selected:hover {
     background-color: $ui-02;
 
+
     .bx--tabs__nav-link, .bx--tabs__nav-link:focus, .bx--tabs__nav-link:active {
       outline: 0;
       outline-offset: 0;
@@ -77,26 +82,20 @@ $carbon--theme: $carbon--theme--g90;
 
   }
 
-  .bx--tabs, .bx--tabs__nav-link {
-    border-bottom: solid 2px $ui-04;
-  }
-
-
-
   .bx--tabs__nav-link, .bx--tabs__nav-link:focus {
     font-size: 1rem;
 
   }
 
-
-
-
   .tabPanel {
     background-color: $ui-02;
+    border-top: solid 2px $ui-02;
+    border-bottom: inset 2px $ui-02;
     padding: 1rem;
+    padding-top: 0rem;
+    padding-right: 0rem;
     width: 100%;
     height: 100%;
-
 
     .sampleText {
       color: $text-01;

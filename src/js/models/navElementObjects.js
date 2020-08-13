@@ -5,7 +5,6 @@ import { addMultiSelectEvents } from '../constructors/animations'
 
 export class MultiSelect {
   constructor(parentId, filters) {
-
     this.templateId = "multiselect-dropdown"
     this.parentId = parentId
     this.filters = Object.entries(filters)
@@ -16,15 +15,12 @@ export class MultiSelect {
   static create(parentId, filters) { return new MultiSelect(parentId, filters) }
 
   makeHTML() {
-    let templateId = this.templateId,
-        clone = cloneTemplate(this.parentId, this.templateId),
+    let clone = cloneTemplate(this.parentId, this.templateId),
         listbox = clone.querySelector("[role='listbox']");
     this.items.map(item => { listbox.append(item.makeHTML()) })
     addMultiSelectEvents(clone)
     return clone
   }
-
-
 }
 
 class MultiSelectItem {
@@ -32,7 +28,6 @@ class MultiSelectItem {
     this.templateId = "multiselect-menuItem"
     this.target = filter[0]
     this.label = filter[1]
-
   }
 
   static create(filter) { return new MultiSelectItem(filter)}
