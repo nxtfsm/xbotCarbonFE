@@ -9,32 +9,29 @@ $carbon--theme: $carbon--theme--g90;
 @import 'node_modules/carbon-components/scss/components/tile/tile';
 
 .collapsingTileTabPanel.tabPanel {
-    overflow: auto;
-
+    overflow: hidden;
 
   .previewPaneCol {
     visibility: collapse;
-    width: 0px;
-    background-color: $text-error;
-    right: 2rem;
-    bottom: 2rem;
-    position: fixed;
+    position: relative;
+    height: 100%;
+    flex-basis: 0;
     display: flex;
+    overflow-x: hidden;
     justify-content: flex-start;
 
 
 
   .previewPane {
-    background-color: $text-error;
-    position: relative;
-    width: 100%;
+    background-color: $interactive-04;
+    width: calc(100% - 1rem);
     height: 100%;
+    top: 0;
   }
 
   }
 
   .topGrid {
-
     display: flex;
     flex-grow: 0;
     position: sticky;
@@ -44,6 +41,7 @@ $carbon--theme: $carbon--theme--g90;
     height: 480px;
     padding: 0rem;
     padding-top: .5rem;
+    overflow: hidden;
 
 
   }
@@ -59,6 +57,7 @@ $carbon--theme: $carbon--theme--g90;
   }
   .collapsingTilesCol {
     overflow: scroll;
+    overflow-x: hidden;
 
   }
 
@@ -66,14 +65,14 @@ $carbon--theme: $carbon--theme--g90;
     margin: 0;
     margin-bottom: 1rem;
     flex-shrink: 1;
-    padding-right: 1rem;
+    padding-right: 1rem
   }
 
   .bx--tile--clickable {
     height: 120px;
     width: 100%;
     overflow: hidden;
-    padding: 0;
+
 
   }
 

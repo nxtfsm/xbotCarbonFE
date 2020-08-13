@@ -9,37 +9,54 @@ export const eventHandlers = element => {
           let tl = gsap.timeline()
           tl.add(tileCollapser(this, tiles, topGrid))
         })}
-
 }
 
-/*const previewPaneExpander = (caller, siblings, inGrid) => {
-  //const previewPane = inGrid.querySelector(".previewPaneCol")
-}*/
-
 const tileCollapser = (caller, siblings, inGrid) => {
-  const tiles = gsap.utils.toArray(siblings),
-        previewPaneCol = inGrid.querySelector(".previewPaneCol"),
-        containers = gsap.utils.toArray(inGrid.querySelectorAll('.tileRow')),
-        callerIdx = tiles.indexOf(caller),
-        icon = caller.querySelector('button'),
-        callerCy = caller.getBoundingClientRect().top + caller.height/2,
-        setHeight = inGrid.parentElement.clientHeight - 72,
+  const previewPaneCol = inGrid.querySelector(".previewPaneCol"),
+        previewPane = previewPaneCol.querySelector(".previewPane"),
         anim = gsap.timeline({ defaults: {
           ease: "cubic-bezier(0.2, 0, 0.38, 0.9)",
-          duration: .7,
-          stagger: {amount: .1, from: callerIdx,
-            ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"} }})
-
-        .to(icon, {rotateZ: "-=90deg", duration: .4})
-        .to(containers, { width: "-=496px" }, '-=.2')
-        .set(previewPaneCol, {visibility: 'visible', height: setHeight })
-        .from(previewPaneCol, {x: -480, scaleY: 0}, '-=.1')
-        .to(previewPaneCol, {width: 480, opacity: 1, scaleY: 1 }, '<')
-
-        .to(previewPaneCol, {width: 0, opacity: .5, delay: 6 })
-        .to(containers, { width: "100%" }, '<.05')
-        .to(icon, {rotateZ: "+=90deg", duration: .4}, '<')
-        .set(previewPaneCol, {visibility: 'collapse'});
-
+          duration: .7 }})
+        .add(resizeTiles(caller, siblings))
+        .add(expandColumnWithPane(previewPaneCol, previewPane), '-=.2')
+        .add(collapseColumnWithPane(previewPaneCol, previewPane), '+=3')
+        .add(resizeTiles(caller, siblings, true), '-=.3');
   return anim
+}
+
+const resizeTiles = (caller, siblings, collapsed) => {
+      let tiles = gsap.utils.toArray(siblings),
+          containers = tiles.map(tile => { return tile.parentElement }),
+          callerIdx = tiles.indexOf(caller),
+          icon = caller.querySelector('button'),
+          anim = gsap.timeline(),
+          rotation = "-=90deg",
+          deltaWidth = "-=480px";
+
+          if (collapsed == true) {
+            rotation = "+=90deg"
+            deltaWidth = "+=480px" }
+
+          anim.to(icon, {rotateZ: rotation, duration: .4})
+              .to(containers, { width: deltaWidth, duration: .7,
+                stagger: {amount: .1, from: callerIdx,
+                  ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"} }, '<.05')
+      return anim
+}
+
+const expandColumnWithPane = (col, pane) => {
+      const anim = gsap.timeline()
+        .set(col, {visibility: 'visible' })
+        .fromTo(pane, {scaleY: .2, opacity: 0},
+          {opacity: 1, scaleY: 1, transformOrigin: 'top left' }, '<')
+        .fromTo(col, {x: -480}, {x: 0, flexBasis: 480 }, '<');
+      return anim
+}
+
+const collapseColumnWithPane = (col, pane) => {
+      const anim = gsap.timeline()
+        .to(pane, {scaleY: 0.2, opacity: 0 })
+        .to(col, {x: -480, flexBasis: 0 }, '<.2')
+        .set(col, {visibility: 'collapse'});
+      return anim
 }
