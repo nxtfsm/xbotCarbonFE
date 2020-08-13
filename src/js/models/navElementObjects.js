@@ -4,19 +4,25 @@ import { addMultiSelectEvents } from '../constructors/animations'
 
 
 export class MultiSelect {
-  constructor(parentId, filters) {
+  constructor(parentId, filter) {
     this.templateId = "multiselect-dropdown"
     this.parentId = parentId
-    this.filters = Object.entries(filters)
-    console.log(this.filters)
-    this.items = this.filters.map(filter => { return MultiSelectItem.create(filter)})
+    this.id = filter.id
+    this.labelMsg = filter.labelMsg
+    this.filters = filter.filters
+
+    this.keys = Object.keys(this.filters)
+    this.items = this.keys.map(k => {
+      return MultiSelectItem.create(k, this.filters[k]) } )
   }
 
   static create(parentId, filters) { return new MultiSelect(parentId, filters) }
 
   makeHTML() {
     let clone = cloneTemplate(this.parentId, this.templateId),
+        listLabel = clone.querySelector('.bx--list-box__label'),
         listbox = clone.querySelector("[role='listbox']");
+    listLabel.innerHTML = this.labelMsg
     this.items.map(item => { listbox.append(item.makeHTML()) })
     addMultiSelectEvents(clone)
     return clone
@@ -24,13 +30,13 @@ export class MultiSelect {
 }
 
 class MultiSelectItem {
-  constructor(filter) {
+  constructor(id, label) {
     this.templateId = "multiselect-menuItem"
-    this.target = filter[0]
-    this.label = filter[1]
+    this.target = id
+    this.label = label
   }
 
-  static create(filter) { return new MultiSelectItem(filter)}
+  static create(id, label) { return new MultiSelectItem(id, label)}
 
   makeHTML() {
     let templateId = this.templateId,

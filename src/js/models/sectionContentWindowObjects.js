@@ -6,7 +6,7 @@ export class ContentWindow {
   constructor(section) {
     this.id = section.mainId
     this.type = "blank"
-    this.outerTemplateId = "main-content-section"
+    this.outerTemplateId = section.config.outerTemplateId
   }
 
   static create(section) { return new ContentWindow(section) }

@@ -12,33 +12,48 @@
           "defaultStr": "Locally Sourced Tutorials & Livestreams.",
           "panelTemplateId": "collapsing-tile-tab-panel",
           "sourceJSON": "some-url",
-          "filters": {
-            "python": "Python",
-            "htmlCss": "HTML & CSS",
-            "vanillaJS": "JavaScript",
-            "c++": "C++",
-            "bash": "$Bash"
-          }
-        }
-      },
-      {
+          "filters": [
+            {
+              "id": "language",
+              "labelMsg": "Filter by Language",
+              "filters": {
+                "python": "Python",
+                "htmlCss": "HTML & CSS",
+                "vanillaJS": "JavaScript",
+                "c++": "C++",
+                "bash": "$Bash"}
+              },
+              {
+                "id": "topics",
+                "labelMsg": "Filter by Topic",
+                "filters": {
+                  "fundamentals": "Fundamentals",
+                  "frontEnd": "Front End",
+                  "appStructure": "App Architecture",
+                  "animation": "Animation",
+                  "frameworks": "Frameworks"}
+                }
+            ]
+            }
+          },
+        {
         "id": "externalCodeDemos",
         "title": "External",
         "content": {
           "defaultStr": "Great Stuff from the wide wide world of sports.",
           "sourceJSON": "some-url"
+          }
         }
-      }
-    ]
-  }
+      ]
+    }
   },
-
   "projectGallery": {
     "mainId": "projectGallery",
     "displayTitle": "Project Gallery",
-    "options": {}
+    "options": {
+      "contentTemplateId": "main-content-window"
+    }
   },
-
   "techSupport": {
     "mainId": "techSupport",
     "displayTitle": "Tech Support",
@@ -50,7 +65,6 @@
         "title": "Xavier 1:1",
         "content": {
           "defaultStr": "Tools for making Xavier Pinebooks go.",
-
           "sourceJSON": "some-url"
         }
         },
@@ -79,6 +93,8 @@
   "ourPlatforms": {
     "mainId": "ourPlatforms",
     "displayTitle": "Learn More",
-    "options": {}
+    "options": {
+      "contentTemplateId": "main-content-window"
+    }
   }
 }

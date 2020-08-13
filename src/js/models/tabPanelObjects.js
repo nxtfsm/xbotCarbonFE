@@ -27,7 +27,11 @@ export class TabPanel {
     if (defaultText) { defaultText.innerHTML = this.defaultStr }
 
     if (this.filters) {
-      menuRow.append(MultiSelect.create(this.id, this.filters).makeHTML()) }
+      for (const filter of this.filters) {
+        MultiSelect.create(this.id, filter)
+        menuRow.append( MultiSelect.create(this.id, filter).makeHTML() )
+        }
+      }
 
     if (this.templateId == 'collapsing-tile-tab-panel') {
       addCollapseTileTabEvents(clone)

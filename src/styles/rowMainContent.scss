@@ -18,6 +18,19 @@ $carbon--theme: $carbon--theme--g90;
   padding: 1rem 1rem;
   background-color: $ui-02;
   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .bx--form-item.multiselectDropdown {
+    align-items: flex-end;
+    flex-grow: 0;
+    margin-left: 1rem;
+
+    .bx--list-box__label {
+      width: 10rem;
+    }
+
+  }
 }
 
 .bx--row.mainContentRow {
@@ -46,9 +59,7 @@ $carbon--theme: $carbon--theme--g90;
     display: flex;
 
 
-    .bx--form-item.multiselectDropdown {
-      align-items: flex-end;
-    }
+
 
   }
 
