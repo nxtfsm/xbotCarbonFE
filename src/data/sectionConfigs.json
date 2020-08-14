@@ -3,6 +3,7 @@
     "mainId": "codeDemos",
     "displayTitle": "Code Demos",
     "options": {
+      "type": "tabbed",
       "contentTemplateId": "tabbed-content-window",
       "tabs": [
         {
@@ -30,6 +31,7 @@
                   "fundamentals": "Fundamentals",
                   "frontEnd": "Front End",
                   "appStructure": "App Architecture",
+                  "iot": "Internet of Things",
                   "animation": "Animation",
                   "frameworks": "Frameworks"}
                 }
@@ -51,6 +53,7 @@
     "mainId": "projectGallery",
     "displayTitle": "Project Gallery",
     "options": {
+      "type": "blank",
       "contentTemplateId": "main-content-window"
     }
   },
@@ -58,6 +61,7 @@
     "mainId": "techSupport",
     "displayTitle": "Tech Support",
     "options": {
+      "type": "tabbed",
       "contentTemplateId": "tabbed-content-window",
       "tabs": [
         {
@@ -73,7 +77,6 @@
         "title": "Other Devices",
         "content": {
           "defaultStr": "Guides to get coding on your own machine.",
-
           "sourceJSON": "some-url"
         }
       },
@@ -82,18 +85,17 @@
         "title": "More Resources",
         "content": {
           "defaultStr": "Explore & become an IT ninja admin mage overlord.",
-
           "sourceJSON": "some-url"
         }
       }
     ]
   }
   },
-
   "ourPlatforms": {
     "mainId": "ourPlatforms",
     "displayTitle": "Learn More",
     "options": {
+      "type": "blank",
       "contentTemplateId": "main-content-window"
     }
   }

@@ -10,16 +10,12 @@ export const initSections = fromConfigs => {
 
 class TopLevelSection {
   constructor(conf) {
-    const config = {
-      outerTemplateId: "main-content-section"
-    }
-
+    const config = { outerTemplateId: "main-content-section" }
+    
     this.mainId = conf.mainId
     this.displayTitle = conf.displayTitle
     this.config = Object.assign({}, config, conf.options)
     this.contentWindow = ContentWindow.create(this)
-
-    if (this.config.tabs) {this.contentWindow = TabbedContentWindow.create(this)}
   }
 
   static create(conf) { return new TopLevelSection(conf) }
