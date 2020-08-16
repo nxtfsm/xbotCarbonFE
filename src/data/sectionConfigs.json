@@ -12,7 +12,7 @@
         "content": {
           "defaultStr": "Locally Sourced Tutorials & Livestreams.",
           "panelTemplateId": "collapsing-tile-tab-panel",
-          "sourceJSON": "some-url",
+          "sourceJSON": "../../data/internalDemos.json",
           "filters": [
             {
               "id": "language",

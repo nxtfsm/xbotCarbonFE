@@ -2,6 +2,7 @@
 import { cloneTemplate } from '../constructors/loaders'
 import { MultiSelect } from './navElementObjects'
 import { addCollapseTileTabEvents } from '../constructors/animations'
+import { loadContentTileIcons } from '../controllers/iconLoader'
 
 export class TabPanel {
   constructor(tab) {
@@ -22,6 +23,7 @@ export class TabPanel {
     let clone = cloneTemplate(this.id, this.templateId),
         panel = clone.querySelector('.tabPanel'),
         menuRow = panel.querySelector('.menuRow'),
+        svgWrapper = panel.querySelector('.svgWrapper'),
         defaultText = clone.querySelector('.sampleText');
         clone.children[0].id = `tab-panel-${this.id}`
     if (defaultText) { defaultText.innerHTML = this.defaultStr }
@@ -32,6 +34,10 @@ export class TabPanel {
         menuRow.append( MultiSelect.create(this.id, filter).makeHTML() )
         }
       }
+
+    if (svgWrapper) {
+      loadContentTileIcons(svgWrapper)
+    }
 
     if (this.templateId == 'collapsing-tile-tab-panel') {
       addCollapseTileTabEvents(clone)

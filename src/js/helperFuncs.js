@@ -14,5 +14,3 @@ export const parseElementFromHTML = url => {
           resolver(parsedResponse.querySelectorAll('template')) })
       }
 )}
-
-export const insertElementInHead = element => { document.head.append(element) }
