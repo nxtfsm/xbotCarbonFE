@@ -1,6 +1,6 @@
 export const classToggler = (element, className) => {element.classList.toggle(className)}
 
-export const parseElementFromHTML = url => {
+export const parseElementsFromHTML = url => {
   return new Promise(
     function( resolver ) {
       let request = new Request(url)

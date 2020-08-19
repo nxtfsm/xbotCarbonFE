@@ -1,25 +1,26 @@
 // registerEvents.js
-import * as browserContent from '../../index'
-import { fleetToTiles, displayMainContent, switchTabs } from '../constructors/animations'
-import { setContentWindow } from '../constructors/loaders'
+import { mainBody, fleetGraphicGroup } from '../../index'
+import { fleetToTiles, switchTabs } from '../constructors/animations'
 
-export const registerEvents = (topLevelSections) => {
-  const headerTiles = gsap.utils.toArray(
-    browserContent.topTilesRow.querySelectorAll(".tlhTile") );
+export const registerEvents = () => {
+  const tiles = gsap.utils.toArray(
+    mainBody.headerTilesRow.querySelectorAll(".tlhTile"));
 
-  browserContent.fleetGraphicGroup.addEventListener('click', function()
-    { fleetToTiles(this, headerTiles) })
+  fleetGraphicGroup.addEventListener('click', function() { fleetToTiles(this, tiles) })
 
-  browserContent.mainContentRow.addEventListener('click', function(e) {
+  mainBody.mainContentRow.addEventListener('click', function(e) {
     if (e.target.classList.contains('bx--tabs__nav-link')) { switchTabs(e.target) } })
 
-  for (let tile of headerTiles) {
+  for (let tile of tiles) {
     tile.addEventListener('click', function() {
       if (!this.classList.contains('active')) {
-      let caller = this,
-          targetId = this.dataset.target,
-          sectionToLoad = topLevelSections.find(section => section.mainId == targetId);
-      setContentWindow(sectionToLoad)
-          .then( function() { displayMainContent(targetId) }) }
-        })}
+      let fromTargetId = this.dataset.target,
+          toLoad = mainBody.sections.find(section => section.mainId == fromTargetId);
+
+      mainBody.stageContentWindowForSection(toLoad)
+        .then(mainBody.displayContentWindow(fromTargetId))
+      }
+
+    })}
+
 }

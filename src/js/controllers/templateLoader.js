@@ -1,12 +1,18 @@
 // templateLoader.js
-import { parseElementFromHTML } from "../helperFuncs"
+import { parseElementsFromHTML } from "../helperFuncs"
 
 export const loadTemplatesFromURLs = () => {
   let urls = [/*"./templates/topLevelSectionTile.html",*/ "./templates/tabbedContentWindow.html", "./templates/mainContentSection.html", "./templates/tabListHead.html", "./templates/tabContentPanel.html", "./templates/multiselect.html", "./templates/collapsingTileTabPanel.html"];
-  for (var i = 0; i < urls.length; i++)
-    { parseElementFromHTML(urls[i]).then(nodeList => {
-      for (const node of nodeList) { document.head.append(node) } }) }
+
+  for (var i = 0; i < urls.length; i++) { loadTemplatesFromURL(urls[i]) }
+
   }
+
+const loadTemplatesFromURL = url => {
+  parseElementsFromHTML(url)
+    .then(elements => {
+      for (const element of elements) { document.head.append(element) } })
+}
 
 export const initClone = (forId, templateId) => {
         let template = document.getElementById(templateId),

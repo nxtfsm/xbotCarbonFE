@@ -5,21 +5,19 @@ import './styles/rowMainTopTiles.scss'
 import './styles/rowMainContent.scss'
 import './styles/collapsingTileTabPanel.scss'
 import './styles/scrollSections.scss'
+import { MainBody } from './js/models/MainBody'
 import * as appLoader from './js/constructors/loaders'
 import { scrollIntroAnimation, fleetAnimation } from './js/constructors/animations'
 
-export const topLevelSections = appLoader.getSections(),
-             fleetGraphicGroup = document.getElementById("animFleetContainer"),
-             topTilesRow = document.getElementById("bannerTilesContainer"),
-             mainContentRow = document.querySelector(".mainContentRow");
+export const mainBody = MainBody.create(document.getElementById("mainBody")),
+             fleetGraphicGroup = document.getElementById("animFleetContainer");
 
 appLoader.setMapBG()
 appLoader.setTemplates()
 
 appLoader.initScripts().then( () => {
-  appLoader.setHeaderTiles(topLevelSections)
   appLoader.setIcons()
-  appLoader.setEventListeners(topLevelSections)
+  appLoader.setEventListeners()
   //scrollIntroAnimation()
   fleetAnimation(fleetGraphicGroup)
 })

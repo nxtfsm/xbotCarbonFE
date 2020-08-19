@@ -1,6 +1,5 @@
 // topSectionAnimations.js
-import { classToggler } from '../helperFuncs'
-import { topTilesRow, mainContentRow } from '../../index'
+import { mainBody } from '../../index'
 
 export const expandTileBannerRow = tiles => {
     let labels = [],
@@ -21,16 +20,18 @@ export const expandTileBannerRow = tiles => {
   }
 
 export const displayContentWindow = callerId => {
-    let callerCol = topTilesRow.querySelector(`[data-target=${callerId}]`),
+    let callerCol = mainBody.headerTilesRow.querySelector(`[data-target=${callerId}]`),
         callerTile = callerCol.querySelector('.tlhTile'),
-        activeTile = topTilesRow.querySelector('.active'),
+        activeTile = mainBody.headerTilesRow.querySelector('.active'),
         tl = gsap.timeline( {
           defaults: {
             duration: .4,
             transformOrigin: "center center",
             ease: 'cubic-bezier(0.2, 0, 0.38, 0.9)' },
           onStart: () => {
-            [callerTile, activeTile].map((i) => { if (i) {classToggler(i, 'active')}})}
+            [callerTile, activeTile].map((i) => {
+              if (i) {i.classList.toggle('active')}
+            })}
           })
 
     if (activeTile == null) { return tl.add(firstDisplayContentWindow(callerTile)) }
@@ -41,7 +42,8 @@ export const displayContentWindow = callerId => {
 const firstDisplayContentWindow = fromTile => {
   let anim = gsap.timeline()
     .add(reduceTileRow(fromTile))
-    .add(expandContentWindow(mainContentRow.children[0]))
+    .add(expandContentWindow(mainBody.mainContentRow.children[0]))
+    .add(expandContentWindow(mainBody.mainContentRow.children[0]))
   return anim
 }
 
@@ -49,8 +51,8 @@ const switchDisplayContentWindow = (outgoingTile, incomingTile) => {
   let anim = gsap.timeline()
     .add(flipIcon(outgoingTile))
     .add(flipIcon(incomingTile), '<')
-    .add(collapseContentWindow(mainContentRow.children[0]), '<')
-    .add(expandContentWindow(mainContentRow.children[1]))
+    .add(collapseContentWindow(mainBody.mainContentRow.children[0]), '<')
+    .add(expandContentWindow(mainBody.mainContentRow.children[1]))
   return anim
 }
 
@@ -72,10 +74,14 @@ const collapseContentWindow = outgoingWindow => {
 }
 
 const reduceTileRow = caller => {
-  let tiles = gsap.utils.toArray(topTilesRow.querySelectorAll('.tlhTile')),
-      cols = gsap.utils.toArray(topTilesRow.querySelectorAll('.bx--col')),
-      labels = gsap.utils.toArray(topTilesRow.querySelectorAll('.label')),
-      icons = gsap.utils.toArray(topTilesRow.querySelectorAll('.iconContainer')),
+  let tiles = gsap.utils.toArray(
+    mainBody.headerTilesRow.querySelectorAll('.tlhTile')),
+      cols = gsap.utils.toArray(
+        mainBody.headerTilesRow.querySelectorAll('.bx--col')),
+      labels = gsap.utils.toArray(
+        mainBody.headerTilesRow.querySelectorAll('.label')),
+      icons = gsap.utils.toArray(
+        mainBody.headerTilesRow.querySelectorAll('.iconContainer')),
       callerIdx = tiles.indexOf(caller),
       anim = gsap.timeline({ defaults: {
         stagger: {amount: .2, from: callerIdx, ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"}
@@ -84,8 +90,8 @@ const reduceTileRow = caller => {
         .to(tiles, { height: "4.5rem", duration: .8}, '<.2')
         .add(restyleText(labels), '<')
         .to(icons, { bottom: "1rem" }, '<')
-        .to(topTilesRow, {height: "4.5rem", duration: .8}, "<")
-        .set(mainContentRow, {visibility: "visible"})
+        .to(mainBody.headerTilesRow, {height: "4.5rem", duration: .8}, "<")
+        .set(mainBody.mainContentRow, {visibility: "visible"})
         .set(cols, {height: "4.5rem"});
       return anim
 }
