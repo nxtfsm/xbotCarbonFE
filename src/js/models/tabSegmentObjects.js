@@ -13,8 +13,13 @@ export class TabSegment {
 
   static create(tab) { return new TabSegment(tab) }
 
-  makeHTML(headContainer, panelContainer) {
-    headContainer.append(this.navHead.makeHTML())
-    panelContainer.append(this.contentPanel.makeHTML())
+  makeHTML() {
+    this.navHead.makeHTML()
+    this.contentPanel.makeHTML()
+  }
+
+  setActiveHTML() {
+    this.navHead.setActiveHTML()
+    this.contentPanel.setActiveHTML()
   }
 }

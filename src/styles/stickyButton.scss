@@ -14,6 +14,7 @@ $carbon--theme: $carbon--theme--g90;
   bottom: 1rem;
   left: 2rem;
 
+
   Button {
     width: 100%;
     height: 100%;
@@ -22,6 +23,11 @@ $carbon--theme: $carbon--theme--g90;
     display: flex;
     justify-content: center;
     align-content: center;
+
+  }
+
+  .bx--tooltip__trigger {
+    transition-delay: 1;
   }
 
   .svgWrapper {

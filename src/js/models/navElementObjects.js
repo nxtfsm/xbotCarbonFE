@@ -14,6 +14,8 @@ export class MultiSelect {
     this.keys = Object.keys(this.filters)
     this.items = this.keys.map(k => {
       return MultiSelectItem.create(k, this.filters[k]) } )
+
+    this.html = this.makeHTML()
   }
 
   static create(parentId, filters) { return new MultiSelect(parentId, filters) }
@@ -34,6 +36,7 @@ class MultiSelectItem {
     this.templateId = "multiselect-menuItem"
     this.target = id
     this.label = label
+    this.html = this.makeHTML()
   }
 
   static create(id, label) { return new MultiSelectItem(id, label)}

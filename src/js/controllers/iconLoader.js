@@ -2,7 +2,7 @@ import { getAttributes, toSVG } from '@carbon/icon-helpers';
 import chevronDown from '@carbon/icons/es/chevron--down/32';
 import { CargoShip } from '@carbon/pictograms'
 import { IdBadge } from '@carbon/pictograms'
-import { Apple } from '@carbon/pictograms'
+
 
 export const loadIcons = () => {
   for (let elem of document.querySelectorAll('.iconContainer')) {
@@ -23,9 +23,8 @@ export const loadIcons = () => {
 }
 
 export const loadContentTileIcons = (elem) => {
-  Apple.attrs.height = "64"
-  Apple.attrs.height = "64"
-  loadIconToElem(Apple, elem)
+  //loadIconToElem(Tools, elem)
+
 }
 
 const loadIconToElem = (icon, elem) => {

@@ -21,7 +21,7 @@ $carbon--theme: $carbon--theme--g90;
 
 body {
   background-color: $ui-background;
-  overflow-x: hidden;
+
 }
 
 h1 {
@@ -40,6 +40,6 @@ h1 {
   width: 100vw;
   height: 100vh;
   top: 0;
-  z-index: -2;
+  z-index: -3;
   background-size: cover;
 }

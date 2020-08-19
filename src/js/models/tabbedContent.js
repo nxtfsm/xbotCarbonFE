@@ -15,14 +15,13 @@ export class TabbedContent {
         tabHeadsList = clone.querySelector('ul'),
         tabPanelsContainer = clone.querySelector('.panelsContainer');
 
-        this.tabs.map(tab => { tab.makeHTML(tabHeadsList, tabPanelsContainer) })
+        this.tabs.map((tab, i) => {
+          tab.makeHTML()
+          if (i == 0) { tab.setActiveHTML() }
+          tabHeadsList.append(tab.navHead.html)
+          tabPanelsContainer.append(tab.contentPanel.html)
+        })
 
-    let firstTab = tabHeadsList.children[0],
-        firstPanel = tabPanelsContainer.children[0];
-
-        firstTab.classList.add("bx--tabs__nav-item--selected")
-        firstPanel.hidden = false
-        firstPanel.dataset.ariaHidden = false
-    return clone
+    this.html = clone
   }
 }

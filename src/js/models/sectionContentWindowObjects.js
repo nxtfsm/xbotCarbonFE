@@ -17,7 +17,10 @@ export class ContentWindow {
 
   makeHTML() {
     const clone = cloneTemplate(this.id, this.templateId);
-    if (this.content) { clone.children[0].append( this.content.makeHTML() ) }
-    return clone
+    if (this.content) {
+      this.content.makeHTML()
+      clone.children[0].append( this.content.html ) }
+    this.html = clone
   }
+
 }

@@ -5,8 +5,10 @@ import { eventHandlers as multiSelectEvents } from '../anim/multiselectAnimation
 import { eventHandlers as collapsingTileEvents} from '../anim/collapsingTileAnimations'
 import { switchTabSegments } from '../anim/tabSegmentAnimations'
 import { expandTileBannerRow, displayContentWindow } from '../anim/topSectionAnimations'
+import { initScrollIntroAnim } from '../anim/scrollTriggerIntro'
 
-export const registerAnimations = () => { return registerAnimFX() },
+export const scrollIntroAnimation = () => { initScrollIntroAnim() },
+             registerAnimations = () => { return registerAnimFX() },
              fleetAnimation = (cntnr) => { loadFleetAnimation(cntnr) },
              fleetToTiles = (cntnr, tiles) => { expandFleetToTiles(cntnr, tiles) },
              addMultiSelectEvents = (element) => { multiSelectEvents(element) },

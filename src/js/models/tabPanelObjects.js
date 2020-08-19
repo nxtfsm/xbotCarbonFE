@@ -12,9 +12,7 @@ export class TabPanel {
     this.sourceContents = tab.content.sourceJSON
     this.filters = tab.content.filters
     this.templateId = tab.content.panelTemplateId
-    if (this.templateId == null) {
-      this.templateId = "tab-content-panel"
-    }
+    if (this.templateId == null) { this.templateId = "tab-content-panel" }
   }
 
   static create(tab) { return new TabPanel(tab) }
@@ -30,8 +28,7 @@ export class TabPanel {
 
     if (this.filters) {
       for (const filter of this.filters) {
-        MultiSelect.create(this.id, filter)
-        menuRow.append( MultiSelect.create(this.id, filter).makeHTML() )
+        menuRow.append( MultiSelect.create(this.id, filter).html )
         }
       }
 
@@ -43,6 +40,11 @@ export class TabPanel {
       addCollapseTileTabEvents(clone)
     }
 
-    return clone
+    this.html = clone
+  }
+
+  setActiveHTML() {
+    this.html.children[0].hidden = false
+    this.html.children[0].dataset.ariaHidden = false
   }
 }

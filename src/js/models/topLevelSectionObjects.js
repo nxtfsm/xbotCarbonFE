@@ -11,11 +11,12 @@ export const initSections = fromConfigs => {
 class TopLevelSection {
   constructor(conf) {
     const config = { outerTemplateId: "main-content-section" }
-    
+
     this.mainId = conf.mainId
     this.displayTitle = conf.displayTitle
     this.config = Object.assign({}, config, conf.options)
     this.contentWindow = ContentWindow.create(this)
+    this.headerTileHTML = this.makeHeaderTileHTML()
   }
 
   static create(conf) { return new TopLevelSection(conf) }
@@ -30,5 +31,8 @@ class TopLevelSection {
     return clone
   }
 
-  makeContentWindowHTML() { return this.contentWindow.makeHTML() }
+  getMainContentWindowHTML() {
+    this.contentWindow.makeHTML()
+    return this.contentWindow.html }
+
 }

@@ -74,26 +74,17 @@ $carbon--theme: $carbon--theme--g90;
     width: 100%;
     overflow: hidden;
 
-
-  }
-
-  .bx--tile-content__above-the-fold {
-    //background-color: $decorative-01;
-    height: 120px;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-
-    .toggler {
+    .svgWrapper {
       position: absolute;
       right: .5rem;
-      bottom: .5rem;
-      background-color: $interactive-01;
+      top: .5rem;
+      //color: $interactive-01;
+      //background-color: $interactive-01;
     }
 
     .banner {
       @include carbon--type-style("display-02")
-      color: $support-04;
+      //color: $support-04;
       //font-weight: 600;
       position: absolute;
       right: .5rem;
@@ -109,11 +100,40 @@ $carbon--theme: $carbon--theme--g90;
       @include carbon--type-style("body-short-02");
       max-width: 34rem;
     }
+
+  }
+
+  .bx--tile-content__above-the-fold {
+    //background-color: $decorative-01;
+    height: 120px;
+    padding: 1rem;
+    display: flex;
+
+    flex-direction: column;
+
+
   }
 
   .bx--tile-content__above-the-fold:hover {
     background-color: $decorative-01;
 
+
   }
+
+  .bx--tile-content__below-the-fold {
+    height: 120px;
+    width: 100%;
+    visibility: visible;
+
+    h2 {
+      position: relative;
+      top: .5rem;
+      left: .5rem;
+      font-weight: 600;
+      color: $support-04;
+    }
+  }
+
+
 
 }

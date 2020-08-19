@@ -16,6 +16,11 @@ export class TabHead {
     clone.children[0].dataset.target = `tab-panel-${this.id}`
     link.id = `tab-link-${this.id}`
     link.innerHTML = this.title
-    return clone
+
+    this.html = clone
+  }
+
+  setActiveHTML() {
+    this.html.children[0].classList.add("bx--tabs__nav-item--selected")
   }
 }

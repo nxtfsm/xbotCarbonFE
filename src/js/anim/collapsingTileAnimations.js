@@ -3,46 +3,61 @@ import { classToggler } from '../helperFuncs'
 
 export const eventHandlers = element => {
   const topGrid = element.querySelector('.topGrid'),
-        tiles = topGrid.querySelectorAll('.bx--tile');
+        tiles = topGrid.querySelectorAll('.bx--tile'),
+        tileRows = topGrid.querySelectorAll('.bx--tile-content');
 
-        for (const tile of tiles) { tile.addEventListener('click', function() {
-          let tl = gsap.timeline(
-            { defaults: {ease: "cubic-bezier(0.2, 0, 0.38, 0.9)", duration: .7 }});
-          /*if (!topGrid.classList.contains('previewExpanded')) {
-            return tl.add(displayPreviewPane(this, tiles, topGrid)) }
-
-          else {
-            let outgoingActive = topGrid.querySelector('.activeSelected')
-            tl.add(hidePreviewPane(outgoingActive, tiles, topGrid))
-            if (this == outgoingActive) { return }
-            tl.add(displayPreviewPane(this, tiles, topGrid), '-=.2')
-            return
-          }*/
-          if (topGrid.classList.contains('previewExpanded')) {
-            let outgoingActive = topGrid.querySelector('.activeSelected')
-
-            tl.add(hidePreviewPane(outgoingActive, tiles, topGrid))
-
-            if (outgoingActive != this) {
-              tl.add(displayPreviewPane(this, tiles, topGrid))
-             }
-
-            //else {
-              //console.log('firing in 3')
-              //tl.add(hidePreviewPane(outgoingActive, tiles, topGrid))
-              //tl.add(displayPreviewPane(this, tiles, topGrid))
-              return
-            }
-
-            tl.add(displayPreviewPane(this, tiles, topGrid))
+        for (const tile of tiles) {
+          tile.addEventListener('click', function() {
+            toggleTilesAndPane(topGrid, tiles, this) })
+          /*tile.addEventListener('mouseenter', function() {
+              frontBackHoverFaderIn(this) }),
+          tile.addEventListener('mouseout', function() {
+                frontBackHoverFaderOut(this)
+              })*/
+          }
+        /*for (const row of tileRows) {
+          row.addEventListener('mouseenter', function() {
+            frontBackHoverFaderIn(this)
           })
-
-            //.add(displayPreviewPane(this, tiles, topGrid))
-            //.add(hidePreviewPane(this, tiles, topGrid), '+=3')
-
-
-      }
+          row.addEventListener('mouseout', function() {
+            frontBackHoverFaderOut(this)
+          })
+        }*/
 }
+
+const frontBackHoverFaderIn = (row) => {
+    const aboveFold = row.querySelector(".bx--tile-content__above-the-fold"),
+          belowFold = row.querySelector(".bx--tile-content__below-the-fold"),
+          tl = gsap.timeline({ defaults: {delay: 1.5, duration: .7,
+              ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"} })
+            .to(aboveFold, {opacity: 0})
+            .to(belowFold, {y: '-120px', opacity: 1}, '<');
+
+    return tl
+}
+
+const frontBackHoverFaderOut = (row) => {
+    const aboveFold = row.querySelector(".bx--tile-content__above-the-fold"),
+          belowFold = row.querySelector(".bx--tile-content__below-the-fold"),
+          tl = gsap.timeline({ defaults: { duration: .7,
+              ease: "cubic-bezier(0.2, 0, 0.38, 0.9)"} })
+            .to(belowFold, {y: 0, opacity: 0})
+            .to(aboveFold, {opacity: 1}, '<.2')
+            .set(belowFold, {visiblity: 'collapse'})
+
+    return tl
+}
+
+const toggleTilesAndPane = (inGrid, tiles, caller) => {
+  const tl = gsap.timeline(
+    { defaults: { ease: "cubic-bezier(0.2, 0, 0.38, 0.9)", duration: .7 }});
+
+  if (inGrid.classList.contains('previewExpanded')) {
+     let outgoingActive = inGrid.querySelector('.activeSelected')
+     tl.add(hidePreviewPane(outgoingActive, tiles, inGrid))
+     if (outgoingActive == caller) { return } }
+  tl.add(displayPreviewPane(caller, tiles, inGrid))
+  }
 
 const displayPreviewPane = (caller, siblings, inGrid) => {
   const previewPaneCol = inGrid.querySelector(".previewPaneCol"),
@@ -69,19 +84,6 @@ const hidePreviewPane = (caller, siblings, inGrid) => {
   return anim
 }
 
-const tileCollapser = (caller, siblings, inGrid) => {
-  const previewPaneCol = inGrid.querySelector(".previewPaneCol"),
-        previewPane = previewPaneCol.querySelector(".previewPane"),
-        anim = gsap.timeline()
-        //.add(resizeTiles(caller, siblings))
-        //.add(expandColumnWithPane(previewPaneCol, previewPane), '-=.2')
-        .add(displayPreviewPane(caller, siblings, inGrid))
-        .add(hidePreviewPane(caller, siblings, inGrid), '+=3')
-        //.add(collapseColumnWithPane(previewPaneCol, previewPane), '+=3')
-        //.add(resizeTiles(caller, siblings, true), '-=.3');
-  return anim
-}
-
 const resizeTiles = (caller, siblings, collapsed) => {
       let tiles = gsap.utils.toArray(siblings),
           containers = tiles.map(tile => { return tile.parentElement }),
@@ -105,8 +107,6 @@ const resizeTiles = (caller, siblings, collapsed) => {
 const expandColumnWithPane = (col, pane) => {
       const anim = gsap.timeline()
         .set(col, {visibility: 'visible' })
-        //.fromTo(pane, {scaleY: .2, opacity: 0},
-        //  {opacity: 1, scaleY: 1, transformOrigin: 'top left' }, '<')
         .to(pane, {opacity: 1, scaleY: 1, transformOrigin: 'top left' }, '<')
         .to(col, {x: 0, flexBasis: 480 }, '<');
       return anim
