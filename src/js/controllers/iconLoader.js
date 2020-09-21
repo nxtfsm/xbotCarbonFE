@@ -22,11 +22,6 @@ export const loadIcons = () => {
   }
 }
 
-export const loadContentTileIcons = (elem) => {
-  //loadIconToElem(Tools, elem)
-
-}
-
 const loadIconToElem = (icon, elem) => {
   const iconSVG = toSVG({ ...icon, attrs: getAttributes(icon.attrs) })
   elem.appendChild(iconSVG)

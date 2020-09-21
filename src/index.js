@@ -7,7 +7,7 @@ import './styles/collapsingTileTabPanel.scss'
 import './styles/scrollSections.scss'
 import { MainBody } from './js/models/MainBody'
 import * as appLoader from './js/constructors/loaders'
-import { scrollIntroAnimation, fleetAnimation } from './js/constructors/animations'
+import * as startAnimations from './js/constructors/introAnimations'
 
 export const mainBody = MainBody.create(document.getElementById("mainBody")),
              fleetGraphicGroup = document.getElementById("animFleetContainer");
@@ -18,6 +18,6 @@ appLoader.setTemplates()
 appLoader.initScripts().then( () => {
   appLoader.setIcons()
   appLoader.setEventListeners()
-  //scrollIntroAnimation()
-  fleetAnimation(fleetGraphicGroup)
+  startAnimations.animateFleetGraphic(fleetGraphicGroup)
+  //startAnimations.welcomeScrollStory()
 })

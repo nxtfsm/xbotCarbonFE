@@ -1,14 +1,14 @@
-// tabbedContent.js
+// TabbedContent.js
 import { cloneTemplate } from '../constructors/loaders'
-import { TabSegment } from './tabSegmentObjects'
+import { TabSegment } from './tabSegment'
 
 export class TabbedContent {
-  constructor(id, config) {
-    this.id = id
+  constructor(mainId, config) {
+    this.id = mainId
     this.templateId = config.contentTemplateId
     this.tabs = config.tabs.map(tab => { return TabSegment.create(tab) }) }
 
-  static create(id, config) { return new TabbedContent(id, config) }
+  static create({mainId, config}) { return new TabbedContent(mainId, config) }
 
   makeHTML() {
     let clone = cloneTemplate(this.id, this.templateId),

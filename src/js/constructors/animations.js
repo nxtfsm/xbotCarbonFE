@@ -1,18 +1,15 @@
 // animations.js
 import { registerAnimFX } from '../anim/registerAnimations'
-import { loadFleetAnimation, expandFleetToTiles} from '../anim/fleetAnimations'
+import { expandFleetToTiles } from '../anim/fleetAnimations'
 import { eventHandlers as multiSelectEvents } from '../anim/multiselectAnimations'
 import { eventHandlers as collapsingTileEvents} from '../anim/collapsingTileAnimations'
 import { switchTabSegments } from '../anim/tabSegmentAnimations'
 import { expandTileBannerRow, displayContentWindow } from '../anim/topSectionAnimations'
-import { initScrollIntroAnim } from '../anim/scrollTriggerIntro'
 
-export const scrollIntroAnimation = () => { initScrollIntroAnim() },
-             registerAnimations = () => { return registerAnimFX() },
-             fleetAnimation = (cntnr) => { loadFleetAnimation(cntnr) },
+export const registerAnimations = () => { return registerAnimFX() },
              fleetToTiles = (cntnr, tiles) => { expandFleetToTiles(cntnr, tiles) },
              addMultiSelectEvents = (element) => { multiSelectEvents(element) },
              addCollapseTileTabEvents = (element) => {collapsingTileEvents(element) },
              switchTabs = (caller) => { switchTabSegments(caller) },
              expandTiles = (tiles) => { return expandTileBannerRow(tiles) },
-             displayMainContent = (callerId) => { displayContentWindow(callerId)}
+             displayMainContent = (callerId) => { displayContentWindow(callerId) }

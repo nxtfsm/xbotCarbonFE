@@ -23,11 +23,11 @@ export const loadFleetAnimation = container => {
 }
 
 export const expandFleetToTiles = (container, toTiles) => {
-  let tl = gsap.timeline()
   helperText.remove()
-  tl.add(quickFleetCollapser(container))
-  tl.add(quickFleetToTiles(container, toTiles))
-  tl.add(expandTiles(toTiles), '-=.8')
+  let tl = gsap.timeline()
+      .add(quickFleetCollapser(container))
+      .add(quickFleetToTiles(container, toTiles))
+      .add(expandTiles(toTiles), '-=.8');
 }
 
 let helperTextsAnimSwitcher = () => {
@@ -36,11 +36,10 @@ let helperTextsAnimSwitcher = () => {
             defaults: { duration: .7, ease: "sine" },
             smoothChildTiming: true,
             onRepeat: () => {
-              if (switchCounter % 2 == 0)
-                { helperText.innerHTML = helperMessages[0] }
-              else
-                { helperText.innerHTML = helperMessages[1] }
-              switchCounter++ } });
+              const mod = switchCounter % helperMessages.length
+              helperText.innerHTML = helperMessages[mod]
+              switchCounter++
+            } });
     anim.to(helperText, { scaleY: 0, transformOrigin: "center left", opacity: 0 } )
 }
 

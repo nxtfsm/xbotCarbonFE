@@ -1,7 +1,6 @@
-// navElementObjects.js
+// multiSelect.js
 import { cloneTemplate } from '../constructors/loaders'
 import { addMultiSelectEvents } from '../constructors/animations'
-
 
 export class MultiSelect {
   constructor(parentId, filter) {

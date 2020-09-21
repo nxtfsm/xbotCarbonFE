@@ -14,11 +14,11 @@ export const registerEvents = () => {
   for (let tile of tiles) {
     tile.addEventListener('click', function() {
       if (!this.classList.contains('active')) {
-      let fromTargetId = this.dataset.target,
-          toLoad = mainBody.sections.find(section => section.mainId == fromTargetId);
+      let targetId = this.dataset.target,
+          toLoad = mainBody.sections.find(section => section.mainId == targetId);
 
       mainBody.stageContentWindowForSection(toLoad)
-        .then(mainBody.displayContentWindow(fromTargetId))
+        .then(mainBody.displayContentWindow(targetId))
       }
 
     })}

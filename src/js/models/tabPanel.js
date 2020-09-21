@@ -1,6 +1,6 @@
-// tabPanelObjects.js
+// tabPanel.js
 import { cloneTemplate } from '../constructors/loaders'
-import { MultiSelect } from './navElementObjects'
+import { MultiSelect } from './multiSelect'
 import { addCollapseTileTabEvents } from '../constructors/animations'
 import { loadContentTileIcons } from '../controllers/iconLoader'
 

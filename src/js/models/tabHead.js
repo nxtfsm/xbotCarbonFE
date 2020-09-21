@@ -1,4 +1,4 @@
-// tabHeadObjects.js
+// tabHead.js
 import { cloneTemplate } from '../constructors/loaders'
 
 export class TabHead {

@@ -1,5 +1,5 @@
 // mainBody.js
-import { TopLevelSection } from './topLevelSectionObjects'
+import { TopLevelSection } from './topLevelSection'
 import * as sectionConfigJSON from '../../data/sectionConfigs.json'
 import { displayMainContent } from '../constructors/animations'
 
@@ -9,6 +9,7 @@ export class MainBody {
     this.headerTilesRow = domGridElement.querySelector('.topTilesRow')
     this.mainContentRow = domGridElement.querySelector('.mainContentRow')
     this.sections = this.loadTopLevelSections(sectionConfigJSON.default)
+
     this.headerTiles = this.getHeaderTilesHTML()
 
     this.stageHeaderTilesInRow()
@@ -24,8 +25,8 @@ export class MainBody {
 
   getHeaderTilesHTML() {
     const tiles = this.sections.map((section, i) => {
-      if (i == 0 && this.offsetColumns == true) { section.setOffsetOnHeaderTile() }
-      return section.headerTileHTML })
+      if (i == 0 && this.offsetColumns == true){ section.headerTile.setColumnOffset() }
+      return section.headerTile.html })
     return tiles
   }
 
@@ -36,12 +37,10 @@ export class MainBody {
   stageContentWindowForSection(section) {
     const inRow = this.mainContentRow;
     return new Promise(function(onResolve) {
-      inRow.append(section.getMainContentWindowHTML())
+      inRow.append(section.getContentWindowHTML())
       return onResolve()
     })
   }
 
-  displayContentWindow(callerId) {
-    return () => { displayMainContent(callerId) }
-  }
+  displayContentWindow(callerId) { return () => { displayMainContent(callerId) } }
 }

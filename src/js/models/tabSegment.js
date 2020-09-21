@@ -1,6 +1,6 @@
-// tabSegmentObjects.js
-import { TabPanel } from './tabPanelObjects'
-import { TabHead } from './tabHeadObjects'
+// tabSegment.js
+import { TabPanel } from './tabPanel'
+import { TabHead } from './tabHead'
 
 export class TabSegment {
   constructor(tab) {
